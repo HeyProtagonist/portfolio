@@ -1,2 +1,2 @@
-export { MyInfoSection } from './MyInfoSection'
+export { MyInfo } from './MyInfo'
 export { MyWorks } from './MyWorks'

@@ -5,7 +5,7 @@ import { Social } from '../organisms'
 
 interface Props {}
 
-export const MyInfoSection = (props: Props) => {
+export const MyInfo = (props: Props) => {
   return (
     <div className="flex flex-col space-y-10 lg:p-10 lg:space-y-20 lg:w-10/12 justify-evenly lg:h-full max-h-screen">
       <div className="space-y-4">

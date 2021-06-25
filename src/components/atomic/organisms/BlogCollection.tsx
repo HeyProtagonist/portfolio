@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlogSectionItem, SectionHeading } from '../atoms'
+import { BlogSectionItem, SectionHeading } from '../atoms/index'
 
 interface Props {}
 

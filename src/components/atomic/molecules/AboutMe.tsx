@@ -2,7 +2,7 @@ import React from 'react'
 
 export const AboutMe = () => {
   return (
-    <p className="subpixel-antialiased leading-relaxed text-xl font-light text-red-50 md:text-base">
+    <p className="subpixel-antialiased leading-relaxed text-xl font-light md:text-base">
       I’m a Software Engineer currently working as Freelancer. I mostly do
       front-end development, and I’m a{' '}
       <a className="underline font-semibold" href="https://reactjs.org/">

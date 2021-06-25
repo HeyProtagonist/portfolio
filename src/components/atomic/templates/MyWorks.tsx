@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlogCollection, ProjectCollection } from '../organisms'
+import { BlogCollection, ProjectCollection } from '../organisms/index'
 
 interface Props {}
 

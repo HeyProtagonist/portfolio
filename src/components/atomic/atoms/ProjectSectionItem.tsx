@@ -19,7 +19,7 @@ export const ProjectSectionItem = ({
     <a
       target="_blank"
       href={githubRepositoryLink}
-      className="bg-gray-800 p-10 space-y-2 block"
+      className="bg-gray-800 p-10 space-y-2 block hover:bg-gray-700 hover:bg-opacity-50"
     >
       <p className="font-normal">{baseProgrammingLanguage}</p>
       <p className="font-semibold text-2xl">{projectName}</p>

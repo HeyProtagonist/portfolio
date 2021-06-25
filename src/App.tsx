@@ -1,8 +1,12 @@
-import React from "react";
-import { Home } from "./components/pages";
+import React from 'react'
+import { Home } from './components/pages/index'
 
 function App() {
-    return <Home />;
+  return (
+    <div className="text-gray-50">
+      <Home />
+    </div>
+  )
 }
 
-export default App;
+export default App
