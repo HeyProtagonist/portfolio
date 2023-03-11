@@ -11,7 +11,7 @@ export const Social = (props: Props) => {
     <div className="flex items-center justify-between w-11/12 md:justify-start md:space-x-10 h-20">
       <img
         className="text-center w-14 h-14 rounded-full overflow-hidden bg-white"
-        src="/src/favicon.jpg"
+        src={`https://pbs.twimg.com/profile_images/1600003925343862784/HRLB3eW5_400x400.jpg`}
         alt="Anguram Shanmugam With A Cool Posture 😁"
       />
 
