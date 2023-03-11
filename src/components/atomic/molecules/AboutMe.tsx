@@ -2,15 +2,26 @@ import React from 'react'
 
 export const AboutMe = () => {
   return (
-    <p className="subpixel-antialiased leading-relaxed text-xl font-light md:text-base">
-      I’m a Software Engineer currently working as Freelancer. I mostly do
-      front-end development, and I’m a{' '}
-      <a className="underline font-semibold" href="https://reactjs.org/">
-        React.js
-      </a>{' '}
-      and CSS nerd. I can't shut up about open source development and
-      utility-first CSS.
-      {/* I also share what I learn on my blog frontstuff.io, or at meetups and conferences. */}
-    </p>
+    <div className="subpixel-antialiased leading-relaxed text-xl font-light md:text-base">
+      <p>
+        Hey there, fellow human 🙋‍♂️. I am a{' '}
+        <b className="font-semibold">React web developer</b> ⚛️🧑‍💻,{' '}
+      </p>
+      <br />
+      <p>
+        fluent in the language of <b className="font-semibold">JSX 📜</b> and
+        the art of{' '}
+        <b className="font-semibold"> component-based architecture 🏗️</b>. My
+        <b className="font-semibold"> virtual DOM-fu 🥋</b> is strong 🦾, and I
+        wield it with precision and finesse to{' '}
+        <b className="font-semibold">craft web experiences ⚔️</b> that are as
+        delightful as they are <b className="font-semibold">functional ⚖️</b>.
+      </p>
+      <br />
+      <p>
+        So if you're looking to inject some serious digital mojo into your
+        online presence 🌐, look no further - I've got your back ✌️.
+      </p>
+    </div>
   )
 }

@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "description": "My portfolio app to stage all my works and projects",
-  "version": "2021.06.24",
+  "version": "2023.03.11",
   "keywords": [
     "retr0c0de",
     "portfolio",
@@ -13,7 +13,7 @@
     {
       "name": "retr0c0de",
       "email": "anguram.k.s@gmail.com",
-      "web": "https://anguram.vercel.app"
+      "web": "https://anguram.dev"
     }
   ],
   "license": "UNLICENSED",
