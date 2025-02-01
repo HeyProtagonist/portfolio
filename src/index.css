@@ -1,0 +1,411 @@
+@import "tailwindcss";
+
+/* rajdhani-latin-300-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 300;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-300-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-300-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* rajdhani-latin-400-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-400-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-400-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* rajdhani-latin-500-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 500;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-500-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-500-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* rajdhani-latin-600-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 600;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-600-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-600-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* rajdhani-latin-700-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 700;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-700-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-700-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* rajdhani-latin-ext-300-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 300;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-300-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-300-normal.woff)
+      format("woff");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* rajdhani-latin-ext-400-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-400-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-400-normal.woff)
+      format("woff");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* rajdhani-latin-ext-500-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 500;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-500-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-500-normal.woff)
+      format("woff");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* rajdhani-latin-ext-600-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 600;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-600-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-600-normal.woff)
+      format("woff");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* rajdhani-latin-ext-700-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 700;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-700-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-latin-ext-700-normal.woff)
+      format("woff");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* rajdhani-devanagari-300-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 300;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-300-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-300-normal.woff)
+      format("woff");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0,
+    U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
+/* rajdhani-devanagari-400-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-400-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-400-normal.woff)
+      format("woff");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0,
+    U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
+/* rajdhani-devanagari-500-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 500;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-500-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-500-normal.woff)
+      format("woff");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0,
+    U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
+/* rajdhani-devanagari-600-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 600;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-600-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-600-normal.woff)
+      format("woff");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0,
+    U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
+/* rajdhani-devanagari-700-normal */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 700;
+  src:
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-700-normal.woff2)
+      format("woff2"),
+    url(@fontsource/rajdhani/files/rajdhani-devanagari-700-normal.woff)
+      format("woff");
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0,
+    U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+
+/* jetbrains-mono-latin-wght-normal */
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 100 800;
+  src: url(@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2)
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  --JetBrains: "JetBrains Mono Variable", Inter, system-ui, Avenir, helvetica,
+    Arial;
+}
+
+:root {
+  font-family: "Rajdhani", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+
+  color-scheme: light dark;
+  color: #011627;
+  background-color: #f6f9fc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #ff003c;
+  text-decoration: inherit;
+  transition:
+    color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    text-decoration-color 0.25s,
+    text-decoration-thickness 0.25s;
+}
+
+a:hover {
+  color: #39c4b6;
+  text-decoration: underline;
+  text-decoration-color: #39c4b6; /* Matches hover color */
+  text-decoration-thickness: 2px;
+  transition:
+    color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    text-decoration-color 0.25s,
+    text-decoration-thickness 0.25s;
+}
+
+/* Target touch devices (mobile) */
+@media (hover: none) {
+  a {
+    text-decoration: underline; /* Always underline on touch devices */
+    text-decoration-thickness: 2px;
+  }
+
+  a:hover {
+    color: #39c4b6; /* Keep hover color change */
+    text-decoration-color: #39c4b6; /* Match hover color */
+  }
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid #011627;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  outline: 8px auto -webkit-focus-ring-color;
+  transition: border-color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  user-select: none;
+}
+button:hover {
+  background: #ff003c;
+  border-color: #ff003c;
+  color: #f6f9fc;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1.4s steps(1, start) infinite;
+  }
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    font-family: "Rajdhani", Inter, system-ui, Avenir, Helvetica, Arial,
+      sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    background: #011627;
+    color: #f6f9fc;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: #ffea00;
+    text-decoration: inherit;
+    transition:
+      color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+      text-decoration-color 0.25s,
+      text-decoration-thickness 0.25s;
+  }
+
+  a:hover {
+    color: #00f0ff;
+    text-decoration: underline;
+    text-decoration-color: #00f0ff; /* Matches hover color */
+    text-decoration-thickness: 2px;
+    transition:
+      color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+      text-decoration-color 0.25s,
+      text-decoration-thickness 0.25s;
+  }
+
+  button {
+    border-radius: 8px;
+    border: 2px solid #f6f9fc;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    outline: 8px auto -webkit-focus-ring-color;
+    transition: border-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  button:hover {
+    background: #ff003c;
+    border-color: #ff003c;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.5);
+  }
+}

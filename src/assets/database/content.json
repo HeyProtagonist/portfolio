@@ -1,0 +1,97 @@
+{
+  "name": "Anguram Shanmugam",
+  "quickNote": "Working as Senior Web Developer at InfoVision. I aim to be efficient and effective by writing less code that accomplishes more.",
+  "about": [
+    {
+      "question": "currentLocation",
+      "answer": "Coimbatore, Tamil Nadu"
+    },
+    {
+      "question": "contact",
+      "answer": {
+        "name": "ThisIsAnguram@gmail.com",
+        "href": "mailto:ThisIsAnguram@gmail.com"
+      }
+    },
+    {
+      "question": "resume",
+      "answer": {
+        "name": "Anguram.pdf",
+        "href": "https://www.dropbox.com/scl/fi/b4sahu06vw7xtszk5rvz9/Resume.pdf?rlkey=o7cicie644js6ukfh7mpd5f4c&st=oc8obctm&dl=0"
+      }
+    },
+    {
+      "question": "skills",
+      "answer": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Redux",
+        "WebPack",
+        "Vite",
+        "Git"
+      ]
+    },
+    {
+      "question": "interests",
+      "answer": ["Programming", "Philosophy", "Assassin's Creed"]
+    },
+    {
+      "question": "education",
+      "answer": "B.Sc. Computer Science - St.Joseph's College, Tiruchirapalli"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Right Work",
+      "description": "Right Work is a project management tool developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
+      "techStack": ["React", "Redux", "TailwindCSS", "chart.js"],
+      "live": "https://rightwork.netlify.app/",
+      "github": "https://github.com/HeyProtagonist/project-manage-jobs"
+    },
+    {
+      "name": "dotfiles",
+      "description": "dotfiles is a side project to manage configuration for various tools such as bash, vim, vscode, nvm, etc. It helps in backing up configurations using scripts and restoring them in the same way, making it useful for setting up a new machine without much effort.",
+      "techStack": ["JavaScript", "Bash", "NodeJS"],
+      "live": "https://github.com/HeyProtagonist/dotfiles",
+      "github": "https://github.com/HeyProtagonist/dotfiles"
+    },
+    {
+      "name": "React TypeScript WebPack Template",
+      "description": "React TypeScript WebPack Template is a boilerplate project inspired from \"gopinav/React-TypeScript-Webpack-Starter\" to start a new React project with TypeScript and WebPack. It is configured with WebPack to bundle the project and TypeScript for type checking. The source code is available on GitHub.",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "WebPack",
+        "TailwindCSS",
+        "Prettier",
+        "ESLint",
+        "Husky",
+        "Conventional Commits"
+      ],
+      "live": "https://github.com/HeyProtagonist/template-react-typescript",
+      "github": "https://github.com/HeyProtagonist/template-react-typescript"
+    },
+    {
+      "name": "expend-inator",
+      "description": "Really Sorry for the name 😅. expend-inator is a simple expense tracker developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
+      "techStack": ["React", "Redux", "TailwindCSS", "chart.js", "TypeScript"],
+      "live": "https://expend-inator.vercel.app/",
+      "github": "https://github.com/HeyProtagonist/project-expense-tracker"
+    }
+  ],
+  "contact-me": [
+    {
+      "name": "ThisIsAnguram@gmail.com",
+      "href": "mailto:ThisIsAnguram@gmail.com"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "https://www.linkedin.com/in/heyprotagonist/"
+    },
+    {
+      "name": "GitHub",
+      "href": "https://github.com/HeyProtagonist"
+    }
+  ]
+}
