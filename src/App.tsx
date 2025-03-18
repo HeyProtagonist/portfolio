@@ -123,6 +123,7 @@ function App() {
           {Payload["contact-me"].map((contact, index) => {
             return (
               <a
+                rel="me"
                 href={contact.href}
                 className="py-4 text-xl font-semibold underline underline-offset-4"
                 key={index}
