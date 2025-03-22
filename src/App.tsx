@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Terminal from "./components/Terminal/Terminal";
 import Payload from "./assets/database/content.json";
 import { useEffect, useState } from "react";
@@ -137,6 +138,7 @@ function App() {
 
       {/* Copyright */}
       <CopyRight />
+      <SpeedInsights />
     </div>
   );
 }
