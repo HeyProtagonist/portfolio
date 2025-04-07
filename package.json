@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview --host"
   },
@@ -14,8 +14,11 @@
     "@fontsource/rajdhani": "^5.1.1",
     "@tailwindcss/vite": "^4.0.2",
     "@vercel/speed-insights": "^1.2.0",
+    "lucide-react": "^0.487.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.5.0",
+    "react-to-print": "^3.0.5",
     "tailwindcss": "^4.0.2"
   },
   "devDependencies": {
@@ -31,5 +34,9 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5"
-  }
+  },
+  "engines": {
+    "yarn": ">=1.22.0"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
