@@ -1,7 +1,15 @@
 {
   "name": "Anguram Shanmugam",
-  "quickNote": "Working as Senior Web Developer at InfoVision. I aim to be efficient and effective by writing less code that accomplishes more.",
+  "quickNote": "I aim to be efficient and effective by writing less code that accomplishes more.",
   "about": [
+    {
+      "question": "overallExperience",
+      "answer": "<overallExperience>"
+    },
+    {
+      "question": "orgNow",
+      "answer": "<orgNow>"
+    },
     {
       "question": "currentLocation",
       "answer": "Coimbatore, Tamil Nadu"
@@ -27,14 +35,20 @@
         "TypeScript",
         "React",
         "Redux",
-        "WebPack",
+        "Node.js",
+        "Express.js",
+        "Webpack",
         "Vite",
-        "Git"
+        "TailwindCSS",
+        "Styled Components",
+        "Git",
+        "NPM Package Development",
+        "Bash/Zsh"
       ]
     },
     {
       "question": "interests",
-      "answer": ["Programming", "Philosophy", "Assassin's Creed"]
+      "answer": ["Programming", "Philosophy", "Assassin's Creed", "Vim"]
     },
     {
       "question": "education",
@@ -52,7 +66,7 @@
     {
       "name": "dotfiles",
       "description": "dotfiles is a side project to manage configuration for various tools such as bash, vim, vscode, nvm, etc. It helps in backing up configurations using scripts and restoring them in the same way, making it useful for setting up a new machine without much effort.",
-      "techStack": ["JavaScript", "Bash", "NodeJS"],
+      "techStack": ["JavaScript", "Bash/Zsh", "NodeJS", "Vim"],
       "live": "https://github.com/HeyProtagonist/dotfiles",
       "github": "https://github.com/HeyProtagonist/dotfiles"
     },
@@ -97,5 +111,97 @@
       "name": "Mastodon",
       "href": "https://mastodon.social/@anguram"
     }
-  ]
+  ],
+  "resume": {
+    "name": "Anguram Shanmugam",
+    "title": "React Developer",
+    "location": "Coimbatore, Tamil Nadu",
+    "contact": {
+      "email": "ThisIsAnguram@gmail.com",
+      "website": "https://anguram.dev"
+    },
+    "profile": "I aim to be efficient and effective by writing less code that accomplishes more.",
+    "employmentHistory": [
+      {
+        "title": "Senior Software Engineer",
+        "company": "Infovision",
+        "location": "Coimbatore",
+        "startDate": "Jul 2021",
+        "endDate": "Present",
+        "projects": [
+          {
+            "name": "Invisinet (Cybersecurity, React Web App)",
+            "responsibilities": [
+              "Led React development team, delivering reusable, performant UI components with hooks, context API, and code-splitting for a streamlined user experience.",
+              "Implemented best practices and coding standards to optimize the React/TypeScript codebase, ensuring maintainability and reducing conflicts.",
+              "Developed and published NPM packages for CLI tools with proper type definitions and semantic versioning, streamlining internal workflows (e.g., an NPM package for AWS SDK integration and a translator tool to manage and maintain translations).",
+              "Utilized modern styling approaches including styled-components and TailwindCSS to create consistent UI components across the application."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Associate Software Engineer",
+        "company": "Accenture",
+        "location": "Chennai",
+        "startDate": "May 2019",
+        "endDate": "Jun 2020",
+        "projects": [
+          {
+            "name": "Optus Project (Australian Telecommunication)",
+            "responsibilities": [
+              "Migrated legacy tools from AngularJS to ReactJS, implementing modern React patterns and performance optimizations.",
+              "Developed and maintained various tools using Java, Linux servers, Git version control, and Oracle/MySQL databases.",
+              "Automated user account control system with Selenium and Java, improving efficiency and reducing manual workload.",
+              "Collaborated with cross-functional teams using Agile methodology for timely delivery of project milestones."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Junior Web Developer",
+        "company": "SPi Global (Straive)",
+        "location": "Chennai",
+        "startDate": "Sep 2018",
+        "endDate": "Apr 2019",
+        "responsibilities": [
+          "Developed user-facing websites using PHP, JavaScript, and e-publishing tools.",
+          "Maintained MySQL databases and Linux servers, establishing a strong foundation in back-end operations."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "St. Joseph's College (Autonomous)",
+        "location": "Tiruchirappalli",
+        "degree": "Bachelor Of Computer Science",
+        "startDate": "Jun 2015",
+        "endDate": "Apr 2018"
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "TypeScript",
+      "React (Hooks, Context API, Suspense)",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "MongoDB (Learning)",
+      "HTML & CSS",
+      "TailwindCSS",
+      "Styled Components",
+      "Webpack/Vite",
+      "Git & Version Control",
+      "NPM Package Development",
+      "RESTful APIs",
+      "Jest & React Testing Library",
+      "Vim",
+      "Bash/Zsh Scripting",
+      "Agile Methodology"
+    ],
+    "languages": [
+      { "language": "Tamil", "proficiency": "Native speaker" },
+      { "language": "English", "proficiency": "Native speaker" }
+    ]
+  }
 }
