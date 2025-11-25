@@ -100,16 +100,20 @@
       "href": "mailto:ThisIsAnguram@gmail.com"
     },
     {
-      "name": "LinkedIn",
-      "href": "https://www.linkedin.com/in/heyprotagonist/"
+      "name": "Bluesky",
+      "href": "https://bsky.app/profile/heyprotagonist.bsky.social"
+    },
+    {
+      "name": "Mastodon",
+      "href": "https://mastodon.social/@anguram"
     },
     {
       "name": "GitHub",
       "href": "https://github.com/HeyProtagonist"
     },
     {
-      "name": "Mastodon",
-      "href": "https://mastodon.social/@anguram"
+      "name": "LinkedIn",
+      "href": "https://www.linkedin.com/in/heyprotagonist/"
     }
   ],
   "resume": {
