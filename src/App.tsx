@@ -38,9 +38,9 @@ function App() {
                 <a href="#projects">
                   <p>Projects</p>
                 </a>
-                <a href="/wedding">
+                {/* <a href="/wedding">
                   <p>Wedding</p>
-                </a>
+                </a> */}
                 <a href="/resume">
                   <p>Resume</p>
                 </a>
