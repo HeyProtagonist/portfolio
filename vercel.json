@@ -1,4 +1,16 @@
 {
+    "redirects": [
+        {
+            "source": "/loc/krr",
+            "destination": "https://maps.app.goo.gl/HiJaPeibtNwLHdJv7",
+            "permanent": true
+        },
+        {
+            "source": "/loc/plni",
+            "destination": "https://maps.app.goo.gl/zjRAUwiEBrGQXuXm7",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/(.*)",
