@@ -1,5 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Terminal from "./components/Terminal/Terminal";
+import WeddingCounter from "./components/WeddingCounter/WeddingCounter";
 import Payload from "./assets/database/content.json";
 import { useEffect, useState } from "react";
 import CopyRight from "./components/CopyRight";
@@ -24,6 +25,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/resume" element={<Resume resume={Payload.resume} />} />
+        <Route path="/wedding" element={<WeddingCounter />} />
         <Route
           path="/"
           element={
@@ -35,6 +37,9 @@ function App() {
                 </a>
                 <a href="#projects">
                   <p>Projects</p>
+                </a>
+                <a href="/wedding">
+                  <p>Wedding</p>
                 </a>
                 <a href="/resume">
                   <p>Resume</p>

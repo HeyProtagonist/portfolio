@@ -11,7 +11,6 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
 
 ```js
 export default tseslint.config({
@@ -25,9 +24,6 @@ export default tseslint.config({
 });
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
 ```js
 // eslint.config.js
@@ -48,3 +44,11 @@ export default tseslint.config({
   },
 });
 ```
+
+## Wedding counter page
+
+After running the dev server or building the app you can visit the wedding countdown page at:
+
+  /wedding
+
+It shows a full-screen hero with the countdown to March 05 2026 10:04 AM and reveals a short message and details when that time is reached.
