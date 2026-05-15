@@ -1,4 +1,5 @@
 import { useRef } from "react";
+// @ts-ignore
 import html2pdf from "html2pdf.js";
 
 type ResumeType = {
@@ -40,19 +41,46 @@ type ResumeType = {
 function Resume({ resume }: { resume: ResumeType }) {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const handleDownload = () => {
-    const element = contentRef.current;
-    if (!element) return;
+  const handleDownload = async () => {
+    console.log("Download process started");
+    const element = document.getElementById("resume-content");
+    
+    if (!element) {
+      console.error("Target element #resume-content not found");
+      alert("Error: Resume content not found. Please try again.");
+      return;
+    }
 
-    const opt = {
-      margin: [15, 10],
-      filename: "resume-anguram.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
+    try {
+      console.log("Configuring html2pdf options...");
+      const opt = {
+        margin: 10,
+        filename: "resume-anguram.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true,
+          logging: true,
+          letterRendering: true
+        },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      };
 
-    html2pdf().from(element).set(opt).save();
+      console.log("Starting PDF generation...");
+      // html2pdf can be a function or have a default property depending on the environment
+      const exporter = typeof html2pdf === 'function' ? html2pdf : (html2pdf as any).default;
+      
+      if (typeof exporter !== 'function') {
+        console.error("html2pdf is not a function:", exporter);
+        throw new Error("PDF library failed to load correctly.");
+      }
+
+      await exporter().from(element).set(opt).save();
+      console.log("PDF generation call completed");
+    } catch (error) {
+      console.error("Detailed PDF Generation Error:", error);
+      alert("Failed to generate PDF. Check console for details.");
+    }
   };
 
   return (
