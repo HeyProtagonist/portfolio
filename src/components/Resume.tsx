@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
+import html2pdf from "html2pdf.js";
 
 type ResumeType = {
   name: string;
@@ -40,92 +40,79 @@ type ResumeType = {
 function Resume({ resume }: { resume: ResumeType }) {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const handlePrint = useReactToPrint({
-    contentRef,
-    documentTitle: `${resume.name}`,
-    onAfterPrint: () => console.log("PDF Exported successfully..."),
-    onPrintError: (error) => console.error("Print error:", error),
-    pageStyle: `
-    @page {
-      size: A4;
-      margin: 15mm 10mm;
-    }
+  const handleDownload = () => {
+    const element = contentRef.current;
+    if (!element) return;
 
-    * {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+    const opt = {
+      margin: [15, 10],
+      filename: "resume-anguram.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
 
-    body {
-      font-family: "Arial", sans-serif;
-      font-size: 11pt;
-      line-height: 1.6;
-      color: #000;
-      background: #fff;
-      padding: 0;
-      margin: 0;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: "Arial", sans-serif;
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-
-    h1 {
-      font-size: 18pt;
-    }
-
-    h2 {
-      font-size: 16pt;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 4px;
-      margin-top: 24px;
-    }
-
-    h3 {
-      font-size: 14pt;
-    }
-
-    h4 {
-      font-size: 12pt;
-    }
-
-    p,
-    li {
-      font-size: 11pt;
-      font-weight: normal;
-      margin: 0 0 6px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-    `,
-  });
+    html2pdf().from(element).set(opt).save();
+  };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto bg-white text-gray-800">
+    <div className="p-8 max-w-4xl mx-auto bg-white text-gray-800 font-sans">
+      <style>
+        {`
+          @media print {
+            .no-print {
+              display: none !important;
+            }
+          }
+          
+          #resume-content {
+            font-family: Arial, sans-serif !important;
+            line-height: 1.6;
+            color: #000;
+          }
+
+          #resume-content h1 {
+            font-size: 24pt;
+            margin-bottom: 8px;
+          }
+
+          #resume-content h2 {
+            font-size: 18pt;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 4px;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: bold;
+          }
+
+          #resume-content h3 {
+            font-size: 14pt;
+            font-weight: bold;
+          }
+
+          #resume-content p, #resume-content li {
+            font-size: 11pt;
+          }
+
+          #resume-content ul {
+            padding-left: 20px;
+            list-style-type: disc;
+          }
+        `}
+      </style>
+
       {/* Download Button */}
-      <div className="mb-4 text-right">
+      <div className="mb-4 text-right no-print">
         <button
-          onClick={() => handlePrint()}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={handleDownload}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
         >
           Download as PDF
         </button>
       </div>
 
       {/* Resume Content */}
-      <div ref={contentRef}>
+      <div ref={contentRef} id="resume-content" className="bg-white">
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold">{resume.name}</h1>
           <p className="text-lg">{resume.title}</p>
