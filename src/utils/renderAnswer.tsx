@@ -7,7 +7,13 @@ const orgNow = Payload.resume.employmentHistory.filter(
   (i) => i.endDate.toLocaleLowerCase() === "present",
 )[0];
 
-export default function renderAnswer(answer: any) {
+type AnswerType =
+  | string
+  | string[]
+  | { name: string; href: string }
+  | { "file-path": string; "file-name": string };
+
+export default function renderAnswer(answer: AnswerType) {
   let result: JSX.Element | string = "";
 
   if (typeof answer === "string" && answer === "<overallExperience>") {
