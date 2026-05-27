@@ -1,6 +1,13 @@
-import { useRef } from "react";
-// @ts-ignore
-import html2pdf from "html2pdf.js";
+import { useEffect, useMemo, useState } from "react";
+import {
+  Document,
+  Link,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+  usePDF,
+} from "@react-pdf/renderer";
 
 type ResumeType = {
   name: string;
@@ -12,6 +19,7 @@ type ResumeType = {
     website: string;
   };
   profile: string;
+  aiEngineering?: string[];
   employmentHistory: {
     title: string;
     company: string;
@@ -38,41 +46,235 @@ type ResumeType = {
   }[];
 };
 
-function Resume({ resume }: { resume: ResumeType }) {
-  const contentRef = useRef<HTMLDivElement>(null);
+const pdfStyles = StyleSheet.create({
+  page: {
+    paddingTop: 28,
+    paddingBottom: 28,
+    paddingHorizontal: 32,
+    fontSize: 10.5,
+    fontFamily: "Helvetica",
+    color: "#000000",
+    lineHeight: 1.45,
+  },
+  header: {
+    textAlign: "center",
+    marginBottom: 14,
+  },
+  name: {
+    fontSize: 28,
+    fontWeight: "bold",
+    lineHeight: 1.1,
+    marginBottom: 1,
+  },
+  title: {
+    fontSize: 12.5,
+    lineHeight: 1.3,
+    marginBottom: 3,
+  },
+  location: {
+    fontSize: 11,
+    lineHeight: 1.35,
+    color: "#4b5563",
+    marginBottom: 4,
+  },
+  contactRow: {
+    fontSize: 10.5,
+    lineHeight: 1.4,
+    color: "#4b5563",
+  },
+  link: {
+    color: "#000000",
+    textDecoration: "underline",
+  },
+  section: {
+    marginBottom: 10,
+  },
+  sectionTitle: {
+    fontSize: 13,
+    fontWeight: "bold",
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
+    paddingBottom: 3,
+    marginBottom: 6,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+  },
+  paragraph: {
+    fontSize: 10.5,
+    lineHeight: 1.45,
+  },
+  jobBlock: {
+    marginBottom: 7,
+    paddingBottom: 1,
+  },
+  heading3: {
+    fontSize: 11.5,
+    fontWeight: "bold",
+    lineHeight: 1.25,
+  },
+  muted: {
+    color: "#4b5563",
+    marginBottom: 3,
+    lineHeight: 1.35,
+  },
+  projectBlock: {
+    marginTop: 3,
+    marginBottom: 3,
+  },
+  projectName: {
+    fontSize: 10.5,
+    fontWeight: "bold",
+    lineHeight: 1.3,
+    marginBottom: 1,
+  },
+  bulletItem: {
+    fontSize: 10.25,
+    lineHeight: 1.4,
+    marginBottom: 2.5,
+    paddingLeft: 10,
+  },
+});
 
-  const handleDownload = async () => {
-    const element = document.getElementById("resume-content");
-    
-    if (!element) {
-      console.error("Target element #resume-content not found");
+function ResumePdfDocument({ resume }: { resume: ResumeType }) {
+  return (
+    <Document
+      title={`${resume.name} Resume`}
+      author={resume.name}
+      subject="Resume"
+      creator="Portfolio Website"
+      producer="react-pdf"
+      language="en-US"
+      pageLayout="oneColumn"
+      pageMode="useNone"
+    >
+      <Page size="A4" style={pdfStyles.page}>
+        <View style={pdfStyles.header}>
+          <Text style={pdfStyles.name}>{resume.name}</Text>
+          <Text style={pdfStyles.title}>{resume.title}</Text>
+          <Text style={pdfStyles.location}>{resume.location}</Text>
+          <Text style={pdfStyles.contactRow}>
+            {resume.contact.email} |{" "}
+            <Link src={resume.contact.website} style={pdfStyles.link}>
+              {resume.contact.website}
+            </Link>
+          </Text>
+        </View>
+
+        <View style={pdfStyles.section} bookmark="Professional Summary">
+          <Text style={pdfStyles.sectionTitle}>Professional Summary</Text>
+          <Text style={pdfStyles.paragraph}>{resume.profile}</Text>
+        </View>
+
+        {resume.aiEngineering && resume.aiEngineering.length > 0 && (
+          <View style={pdfStyles.section} bookmark="AI-Assisted Development">
+            <Text style={pdfStyles.sectionTitle}>AI-Assisted Development</Text>
+            {resume.aiEngineering.map((item, index) => (
+              <Text key={index} style={pdfStyles.bulletItem}>
+                • {item}
+              </Text>
+            ))}
+          </View>
+        )}
+
+        <View style={pdfStyles.section} bookmark="Employment History">
+          <Text style={pdfStyles.sectionTitle}>Employment History</Text>
+          {resume.employmentHistory.map((job, index) => (
+            <View key={index} style={pdfStyles.jobBlock} wrap={false}>
+              <Text style={pdfStyles.heading3}>{job.title}</Text>
+              <Text style={[pdfStyles.paragraph, pdfStyles.muted]}>
+                {job.company}, {job.location} | {job.startDate} - {job.endDate}
+              </Text>
+              {job.projects?.map((project, projectIndex) => (
+                <View key={projectIndex} style={pdfStyles.projectBlock}>
+                  <Text style={pdfStyles.projectName}>{project.name}</Text>
+                  {project.responsibilities.map((item, itemIndex) => (
+                    <Text key={itemIndex} style={pdfStyles.bulletItem}>
+                      • {item}
+                    </Text>
+                  ))}
+                </View>
+              ))}
+              {job.responsibilities?.map((item, itemIndex) => (
+                <Text key={itemIndex} style={pdfStyles.bulletItem}>
+                  • {item}
+                </Text>
+              ))}
+            </View>
+          ))}
+        </View>
+
+        <View style={pdfStyles.section} bookmark="Education">
+          <Text style={pdfStyles.sectionTitle}>Education</Text>
+          {resume.education.map((edu, index) => (
+            <View key={index} style={pdfStyles.jobBlock} wrap={false}>
+              <Text style={pdfStyles.heading3}>{edu.degree}</Text>
+              <Text style={[pdfStyles.paragraph, pdfStyles.muted]}>
+                {edu.institution}, {edu.location} | {edu.startDate} -{" "}
+                {edu.endDate}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={pdfStyles.section} bookmark="Skills">
+          <Text style={pdfStyles.sectionTitle}>Skills</Text>
+          {resume.skills.map((skill, index) => (
+            <Text key={index} style={pdfStyles.bulletItem}>
+              • {skill}
+            </Text>
+          ))}
+        </View>
+
+        <View bookmark="Languages">
+          <Text style={pdfStyles.sectionTitle}>Languages</Text>
+          {resume.languages.map((lang, index) => (
+            <Text key={index} style={pdfStyles.bulletItem}>
+              • {lang.language} - {lang.proficiency}
+            </Text>
+          ))}
+        </View>
+      </Page>
+    </Document>
+  );
+}
+
+function Resume({ resume }: { resume: ResumeType }) {
+  const [pendingDownload, setPendingDownload] = useState(false);
+  const pdfDocument = useMemo(
+    () => <ResumePdfDocument resume={resume} />,
+    [resume],
+  );
+  const [pdfInstance, updatePdfInstance] = usePDF({ document: pdfDocument });
+
+  useEffect(() => {
+    if (!pendingDownload || !pdfInstance.url) {
       return;
     }
 
-    try {
-      const opt = {
-        margin: 10,
-        filename: "resume-anguram.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { 
-          scale: 2, 
-          useCORS: true,
-          letterRendering: true
-        },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      };
+    const safeName = resume.name.replace(/\s+/g, "_");
+    const link = document.createElement("a");
+    link.href = pdfInstance.url;
+    link.download = `${safeName}_Resume.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setPendingDownload(false);
+  }, [pendingDownload, pdfInstance.url, resume.name]);
 
-      const exporter = typeof html2pdf === 'function' ? html2pdf : (html2pdf as any).default;
-      
-      if (typeof exporter !== 'function') {
-        throw new Error("PDF library failed to load correctly.");
-      }
-
-      await exporter().from(element).set(opt).save();
-    } catch (error) {
-      console.error("PDF Generation Error:", error);
-      alert("Failed to generate PDF. Please try again.");
+  useEffect(() => {
+    if (pendingDownload && pdfInstance.error) {
+      alert("Failed to download PDF. Please try again.");
+      setPendingDownload(false);
     }
+  }, [pendingDownload, pdfInstance.error]);
+
+  const handleDownload = () => {
+    if (pdfInstance.loading || pendingDownload) {
+      return;
+    }
+
+    setPendingDownload(true);
+    updatePdfInstance(pdfDocument);
   };
 
   return (
@@ -132,6 +334,7 @@ function Resume({ resume }: { resume: ResumeType }) {
             color: #000000 !important;
             text-decoration: underline !important;
           }
+
         `}
       </style>
 
@@ -139,15 +342,25 @@ function Resume({ resume }: { resume: ResumeType }) {
       <div className="mb-4 text-right no-print">
         <button
           onClick={handleDownload}
+          disabled={pdfInstance.loading || pendingDownload}
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-          style={{ backgroundColor: "#3b82f6", color: "#ffffff", border: "none" }}
+          style={{
+            backgroundColor:
+              pdfInstance.loading || pendingDownload ? "#9ca3af" : "#3b82f6",
+            color: "#ffffff",
+            border: "none",
+            cursor:
+              pdfInstance.loading || pendingDownload ? "not-allowed" : "pointer",
+          }}
         >
-          Download as PDF
+          {pdfInstance.loading || pendingDownload
+            ? "Preparing PDF..."
+            : "Download as PDF"}
         </button>
       </div>
 
       {/* Resume Content */}
-      <div ref={contentRef} id="resume-content" className="bg-white">
+      <div id="resume-content" className="bg-white">
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold">{resume.name}</h1>
           <p className="text-lg">{resume.title}</p>
@@ -162,10 +375,23 @@ function Resume({ resume }: { resume: ResumeType }) {
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
-            Profile
+            Professional Summary
           </h2>
           <p className="text-sm">{resume.profile}</p>
         </section>
+
+        {resume.aiEngineering && resume.aiEngineering.length > 0 && (
+          <section className="mb-6">
+            <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
+              AI-Assisted Development
+            </h2>
+            <ul className="list-disc list-inside text-sm">
+              {resume.aiEngineering.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">

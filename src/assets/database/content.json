@@ -125,6 +125,13 @@
       "website": "https://anguram.dev"
     },
     "profile": "I aim to be efficient and effective by writing less code that accomplishes more.",
+    "aiEngineering": [
+      "Use LLMs as an engineering assist layer for speed and exploration, while keeping architecture, code quality, and final decisions grounded in manual review.",
+      "Built repo-specific Copilot guidance in .github/copilot-instructions.md to keep AI-assisted work consistent and reduce repeated setup across sessions.",
+      "Used MCP servers and custom agent workflows to extend AI tools across React and Node.js tasks when changes span multiple steps.",
+      "Applied context engineering, AI-assisted debugging, and AI-assisted documentation to keep delivery steady on production work.",
+      "Worked with GitHub Copilot, Claude Code, Gemini CLI, and Cursor as part of a repeatable development workflow."
+    ],
     "employmentHistory": [
       {
         "title": "Technical Specialist",
@@ -134,12 +141,27 @@
         "endDate": "Present",
         "projects": [
           {
-            "name": "Invisinet (Cybersecurity, React Web App)",
+            "name": "Invisinet Console / Gateway Manager / Certificate Manager",
             "responsibilities": [
-              "Led React development team, delivering reusable, performant UI components with hooks, context API, and code-splitting for a streamlined user experience.",
-              "Implemented best practices and coding standards to optimize the React/TypeScript codebase, ensuring maintainability and reducing conflicts.",
-              "Developed and published NPM packages for CLI tools with proper type definitions and semantic versioning, streamlining internal workflows (e.g., an NPM package for AWS SDK integration and a translator tool to manage and maintain translations).",
-              "Utilized modern styling approaches including styled-components and TailwindCSS to create consistent UI components across the application."
+              "Lead the React applications for the Invisinet platform, coordinating UI work across Console, Gateway Manager, and Certificate Manager for a production-critical security workflow.",
+              "Built reusable React and TypeScript components, state flows, and validation patterns for identity-driven security flows, keeping the codebase maintainable as the product evolves.",
+              "Progressed an experimental React 18 to 19 migration by using use() where appropriate and trimming unnecessary useMemo and useCallback in the rewrite path.",
+              "Used AI-assisted debugging, repo guidance, and documentation workflows to keep implementation and handoff notes consistent across multi-step changes."
+            ]
+          },
+          {
+            "name": "StackHub CLI",
+            "responsibilities": [
+              "Built StackHub as a TypeScript CLI and Node.js library that provisions Invisinet gateway instances on cloud platforms with Terraform under the hood.",
+              "Shipped the tool for npx, terminal, and backend use so provisioning steps could be standardized across environments.",
+              "Kept the interface small and reusable so the same package could be consumed in scripts and server-side projects."
+            ]
+          },
+          {
+            "name": "Real-time Mock Server",
+            "responsibilities": [
+              "Implemented a mock server for the React apps to simulate real network conditions and reduce repeated round trips to the server during testing.",
+              "Used it to reproduce environment-specific cases faster and make UI validation less dependent on live infrastructure."
             ]
           }
         ]
@@ -186,10 +208,21 @@
     "skills": [
       "JavaScript",
       "TypeScript",
-      "React (Hooks, Context API, Suspense)",
+      "React (Hooks, Context API, Suspense, use())",
+      "AI-Assisted Development",
+      "Context Engineering",
+      "Agentic Workflows",
+      "MCP",
+      "GitHub Copilot",
+      "Claude Code",
+      "Gemini CLI",
       "Redux",
       "Node.js",
       "Express.js",
+      "AWS",
+      "Docker",
+      "Terraform",
+      "CLI Tooling",
       "MongoDB (Learning)",
       "HTML & CSS",
       "TailwindCSS",

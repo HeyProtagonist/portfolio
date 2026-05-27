@@ -7,8 +7,16 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
+type TimeCounter = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isElapsed: boolean;
+};
+
 export default function WeddingCounter({ bgImage }: { bgImage?: string }) {
-  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TimeCounter>(() => getTimeCounter());
   const [isZeroDay, setIsZeroDay] = useState(
     () => Date.now() >= TARGET_DATE.getTime(),
   );
@@ -25,12 +33,21 @@ export default function WeddingCounter({ bgImage }: { bgImage?: string }) {
     try {
       // browser
       return btoa(str);
-    } catch (e) {
+    } catch {
       try {
-        // Node fallback
-        // @ts-ignore
-        return Buffer.from(str, "utf8").toString("base64");
-      } catch (e2) {
+        // Fallback for environments exposing Buffer on globalThis
+        const maybeBuffer = (
+          globalThis as {
+            Buffer?: { from: (value: string, encoding: string) => { toString: (format: string) => string } };
+          }
+        ).Buffer;
+
+        if (!maybeBuffer) {
+          return "";
+        }
+
+        return maybeBuffer.from(str, "utf8").toString("base64");
+      } catch {
         return "";
       }
     }
@@ -75,7 +92,7 @@ export default function WeddingCounter({ bgImage }: { bgImage?: string }) {
 
   useEffect(() => {
     const t = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      setTimeLeft(getTimeCounter());
       if (Date.now() >= TARGET_DATE.getTime()) {
         setIsZeroDay(true);
       }
@@ -101,8 +118,10 @@ export default function WeddingCounter({ bgImage }: { bgImage?: string }) {
         <div className="subtitle-row">
           <div className="subtitle-line">MARCH 05, 2026</div>
           <span className="sub-icon">♡</span>
-          <div className="subtitle-line">10:02 AM</div>
+          <div className="subtitle-line">10:04 AM</div>
         </div>
+
+        <p className="small">{timeLeft.isElapsed ? "Time Since Wedding" : "Countdown to Wedding"}</p>
 
         <div className="countdown boxed">
           {[
@@ -220,16 +239,17 @@ export default function WeddingCounter({ bgImage }: { bgImage?: string }) {
 
 
 
-function getTimeLeft() {
+function getTimeCounter() {
   const now = Date.now();
-  const distance = Math.max(0, TARGET_DATE.getTime() - now);
+  const rawDistance = TARGET_DATE.getTime() - now;
+  const distance = Math.abs(rawDistance);
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((distance / (1000 * 60)) % 60);
   const seconds = Math.floor((distance / 1000) % 60);
 
-  return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds, isElapsed: rawDistance < 0 };
 }
 
 function TypewriterReveal({ text, start }: { text: string; start: boolean }) {

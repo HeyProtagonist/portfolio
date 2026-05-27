@@ -1,11 +1,14 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Terminal from "./components/Terminal/Terminal";
-import WeddingCounter from "./components/WeddingCounter/WeddingCounter";
 import Payload from "./assets/database/content.json";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import CopyRight from "./components/CopyRight";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Resume from "./components/Resume";
+
+const Resume = lazy(() => import("./components/Resume"));
+const WeddingCounter = lazy(
+  () => import("./components/WeddingCounter/WeddingCounter"),
+);
 
 function App() {
   const [displayText, setDisplayText] = useState(""); // Tracks typed text
@@ -24,8 +27,22 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/resume" element={<Resume resume={Payload.resume} />} />
-        <Route path="/wedding" element={<WeddingCounter />} />
+        <Route
+          path="/resume"
+          element={
+            <Suspense fallback={<div className="p-8">Loading...</div>}>
+              <Resume resume={Payload.resume} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/wedding"
+          element={
+            <Suspense fallback={<div className="p-8">Loading...</div>}>
+              <WeddingCounter />
+            </Suspense>
+          }
+        />
         <Route
           path="/"
           element={
