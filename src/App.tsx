@@ -9,6 +9,8 @@ const Resume = lazy(() => import("./components/Resume"));
 const WeddingCounter = lazy(
   () => import("./components/WeddingCounter/WeddingCounter"),
 );
+const Certs = lazy(() => import("./components/Certs"));
+
 
 function App() {
   const [displayText, setDisplayText] = useState(""); // Tracks typed text
@@ -44,6 +46,14 @@ function App() {
           }
         />
         <Route
+          path="/certs"
+          element={
+            <Suspense fallback={<div className="p-8 text-[#FF003C]">Loading Certificates...</div>}>
+              <Certs />
+            </Suspense>
+          }
+        />
+        <Route
           path="/"
           element={
             <div className="w-[100vw] md:w-[1000px] m-0 p-0 md:flex md:flex-col md:justify-start md:items-center md:gap-4 md:mx-auto">
@@ -54,6 +64,9 @@ function App() {
                 </a>
                 <a href="#projects">
                   <p>Projects</p>
+                </a>
+                <a href="/certs">
+                  <p>Certificates</p>
                 </a>
                 {/* <a href="/wedding">
                   <p>Wedding</p>

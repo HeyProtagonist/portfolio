@@ -1,244 +1,297 @@
 {
-  "name": "Anguram Shanmugam",
-  "quickNote": "I aim to be proficient by writing less code that accomplishes more.",
-  "about": [
-    {
-      "question": "overallExperience",
-      "answer": "<overallExperience>"
-    },
-    {
-      "question": "orgNow",
-      "answer": "<orgNow>"
-    },
-    {
-      "question": "currentLocation",
-      "answer": "Coimbatore, Tamil Nadu"
-    },
-    {
-      "question": "contact",
-      "answer": {
-        "name": "ThisIsAnguram@gmail.com",
-        "href": "mailto:ThisIsAnguram@gmail.com"
-      }
-    },
-    {
-      "question": "resume",
-      "answer": {
-        "name": "Anguram.pdf",
-        "href": "https://www.anguram.dev/resume"
-      }
-    },
-    {
-      "question": "skills",
-      "answer": [
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Redux",
-        "Node.js",
-        "Express.js",
-        "Webpack",
-        "Vite",
-        "TailwindCSS",
-        "Styled Components",
-        "Git",
-        "NPM Package Development",
-        "Bash/Zsh"
-      ]
-    },
-    {
-      "question": "interests",
-      "answer": ["Programming", "Philosophy", "Assassin's Creed", "Vim"]
-    },
-    {
-      "question": "education",
-      "answer": "B.Sc. Computer Science - St.Joseph's College, Tiruchirapalli"
-    }
-  ],
-  "projects": [
-    {
-      "name": "Right Work",
-      "description": "Right Work is a project management tool developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
-      "techStack": ["React", "Redux", "TailwindCSS", "chart.js"],
-      "live": "https://rightwork.netlify.app/",
-      "github": "https://github.com/HeyProtagonist/project-manage-jobs"
-    },
-    {
-      "name": "dotfiles",
-      "description": "dotfiles is a side project to manage configuration for various tools such as bash, vim, vscode, nvm, etc. It helps in backing up configurations using scripts and restoring them in the same way, making it useful for setting up a new machine without much effort.",
-      "techStack": ["JavaScript", "Bash/Zsh", "NodeJS", "Vim"],
-      "live": "https://github.com/HeyProtagonist/dotfiles",
-      "github": "https://github.com/HeyProtagonist/dotfiles"
-    },
-    {
-      "name": "React TypeScript WebPack Template",
-      "description": "React TypeScript WebPack Template is a boilerplate project inspired from \"gopinav/React-TypeScript-Webpack-Starter\" to start a new React project with TypeScript and WebPack. It is configured with WebPack to bundle the project and TypeScript for type checking. The source code is available on GitHub.",
-      "techStack": [
-        "React",
-        "TypeScript",
-        "WebPack",
-        "TailwindCSS",
-        "Prettier",
-        "ESLint",
-        "Husky",
-        "Conventional Commits"
-      ],
-      "live": "https://github.com/HeyProtagonist/template-react-typescript",
-      "github": "https://github.com/HeyProtagonist/template-react-typescript"
-    },
-    {
-      "name": "expend-inator",
-      "description": "Really Sorry for the name 😅. expend-inator is a simple expense tracker developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
-      "techStack": ["React", "Redux", "TailwindCSS", "chart.js", "TypeScript"],
-      "live": "https://expend-inator.vercel.app/",
-      "github": "https://github.com/HeyProtagonist/project-expense-tracker"
-    }
-  ],
-  "contact-me": [
-    {
-      "name": "ThisIsAnguram@gmail.com",
-      "href": "mailto:ThisIsAnguram@gmail.com"
-    },
-    {
-      "name": "Bluesky",
-      "href": "https://bsky.app/profile/heyprotagonist.bsky.social"
-    },
-    {
-      "name": "Mastodon",
-      "href": "https://mastodon.social/@anguram"
-    },
-    {
-      "name": "GitHub",
-      "href": "https://github.com/HeyProtagonist"
-    },
-    {
-      "name": "LinkedIn",
-      "href": "https://www.linkedin.com/in/heyprotagonist/"
-    }
-  ],
-  "resume": {
     "name": "Anguram Shanmugam",
-    "title": "React Developer",
-    "location": "Coimbatore, Tamil Nadu",
-    "contact": {
-      "email": "ThisIsAnguram@gmail.com",
-      "website": "https://anguram.dev"
-    },
-    "profile": "I aim to be efficient and effective by writing less code that accomplishes more.",
-    "aiEngineering": [
-      "Use LLMs as an engineering assist layer for speed and exploration, while keeping architecture, code quality, and final decisions grounded in manual review.",
-      "Built repo-specific Copilot guidance in .github/copilot-instructions.md to keep AI-assisted work consistent and reduce repeated setup across sessions.",
-      "Used MCP servers and custom agent workflows to extend AI tools across React and Node.js tasks when changes span multiple steps.",
-      "Applied context engineering, AI-assisted debugging, and AI-assisted documentation to keep delivery steady on production work.",
-      "Worked with GitHub Copilot, Claude Code, Gemini CLI, and Cursor as part of a repeatable development workflow."
+    "quickNote": "I aim to be proficient by writing less code that accomplishes more.",
+    "about": [
+        {
+            "question": "overallExperience",
+            "answer": "<overallExperience>"
+        },
+        {
+            "question": "orgNow",
+            "answer": "<orgNow>"
+        },
+        {
+            "question": "currentLocation",
+            "answer": "Coimbatore, Tamil Nadu"
+        },
+        {
+            "question": "contact",
+            "answer": {
+                "name": "ThisIsAnguram@gmail.com",
+                "href": "mailto:ThisIsAnguram@gmail.com"
+            }
+        },
+        {
+            "question": "resume",
+            "answer": {
+                "name": "Anguram.pdf",
+                "href": "https://www.anguram.dev/resume"
+            }
+        },
+        {
+            "question": "skills",
+            "answer": [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Redux",
+                "Node.js",
+                "Express.js",
+                "Webpack",
+                "Vite",
+                "TailwindCSS",
+                "Styled Components",
+                "Git",
+                "NPM Package Development",
+                "Bash/Zsh"
+            ]
+        },
+        {
+            "question": "interests",
+            "answer": [
+                "Programming",
+                "Philosophy",
+                "Assassin's Creed",
+                "Vim"
+            ]
+        },
+        {
+            "question": "education",
+            "answer": "B.Sc. Computer Science - St.Joseph's College, Tiruchirapalli"
+        }
     ],
-    "employmentHistory": [
-      {
-        "title": "Technical Specialist",
-        "company": "Infovision",
-        "location": "Coimbatore",
-        "startDate": "Jul 2021",
-        "endDate": "Present",
-        "projects": [
-          {
-            "name": "Invisinet Console / Gateway Manager / Certificate Manager",
-            "responsibilities": [
-              "Lead the React applications for the Invisinet platform, coordinating UI work across Console, Gateway Manager, and Certificate Manager for a production-critical security workflow.",
-              "Built reusable React and TypeScript components, state flows, and validation patterns for identity-driven security flows, keeping the codebase maintainable as the product evolves.",
-              "Progressed an experimental React 18 to 19 migration by using use() where appropriate and trimming unnecessary useMemo and useCallback in the rewrite path.",
-              "Used AI-assisted debugging, repo guidance, and documentation workflows to keep implementation and handoff notes consistent across multi-step changes."
-            ]
-          },
-          {
-            "name": "StackHub CLI",
-            "responsibilities": [
-              "Built StackHub as a TypeScript CLI and Node.js library that provisions Invisinet gateway instances on cloud platforms with Terraform under the hood.",
-              "Shipped the tool for npx, terminal, and backend use so provisioning steps could be standardized across environments.",
-              "Kept the interface small and reusable so the same package could be consumed in scripts and server-side projects."
-            ]
-          },
-          {
-            "name": "Real-time Mock Server",
-            "responsibilities": [
-              "Implemented a mock server for the React apps to simulate real network conditions and reduce repeated round trips to the server during testing.",
-              "Used it to reproduce environment-specific cases faster and make UI validation less dependent on live infrastructure."
-            ]
-          }
+    "projects": [
+        {
+            "name": "Right Work",
+            "description": "Right Work is a project management tool developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
+            "techStack": [
+                "React",
+                "Redux",
+                "TailwindCSS",
+                "chart.js"
+            ],
+            "live": "https://rightwork.netlify.app/",
+            "github": "https://github.com/HeyProtagonist/project-manage-jobs"
+        },
+        {
+            "name": "dotfiles",
+            "description": "dotfiles is a side project to manage configuration for various tools such as bash, vim, vscode, nvm, etc. It helps in backing up configurations using scripts and restoring them in the same way, making it useful for setting up a new machine without much effort.",
+            "techStack": [
+                "JavaScript",
+                "Bash/Zsh",
+                "NodeJS",
+                "Vim"
+            ],
+            "live": "https://github.com/HeyProtagonist/dotfiles",
+            "github": "https://github.com/HeyProtagonist/dotfiles"
+        },
+        {
+            "name": "React TypeScript WebPack Template",
+            "description": "React TypeScript WebPack Template is a boilerplate project inspired from \"gopinav/React-TypeScript-Webpack-Starter\" to start a new React project with TypeScript and WebPack. It is configured with WebPack to bundle the project and TypeScript for type checking. The source code is available on GitHub.",
+            "techStack": [
+                "React",
+                "TypeScript",
+                "WebPack",
+                "TailwindCSS",
+                "Prettier",
+                "ESLint",
+                "Husky",
+                "Conventional Commits"
+            ],
+            "live": "https://github.com/HeyProtagonist/template-react-typescript",
+            "github": "https://github.com/HeyProtagonist/template-react-typescript"
+        },
+        {
+            "name": "expend-inator",
+            "description": "Really Sorry for the name 😅. expend-inator is a simple expense tracker developed using React and Redux. It features a modern user interface styled with TailwindCSS and provides data visualization using chart.js. The project is deployed and live at the provided URL, and the source code is available on GitHub.",
+            "techStack": [
+                "React",
+                "Redux",
+                "TailwindCSS",
+                "chart.js",
+                "TypeScript"
+            ],
+            "live": "https://expend-inator.vercel.app/",
+            "github": "https://github.com/HeyProtagonist/project-expense-tracker"
+        }
+    ],
+    "contact-me": [
+        {
+            "name": "ThisIsAnguram@gmail.com",
+            "href": "mailto:ThisIsAnguram@gmail.com"
+        },
+        {
+            "name": "Bluesky",
+            "href": "https://bsky.app/profile/heyprotagonist.bsky.social"
+        },
+        {
+            "name": "Mastodon",
+            "href": "https://mastodon.social/@anguram"
+        },
+        {
+            "name": "GitHub",
+            "href": "https://github.com/HeyProtagonist"
+        },
+        {
+            "name": "LinkedIn",
+            "href": "https://www.linkedin.com/in/heyprotagonist/"
+        }
+    ],
+    "resume": {
+        "name": "Anguram Shanmugam",
+        "title": "React Developer",
+        "location": "Coimbatore, Tamil Nadu",
+        "contact": {
+            "email": "ThisIsAnguram@gmail.com",
+            "website": "https://anguram.dev"
+        },
+        "profile": "I aim to be efficient and effective by writing less code that accomplishes more.",
+        "aiEngineering": [
+            "Use LLMs as an engineering assist layer for speed and exploration, while keeping architecture, code quality, and final decisions grounded in manual review.",
+            "Built repo-specific Copilot guidance in .github/copilot-instructions.md to keep AI-assisted work consistent and reduce repeated setup across sessions.",
+            "Used MCP servers and custom agent workflows to extend AI tools across React and Node.js tasks when changes span multiple steps.",
+            "Applied context engineering, AI-assisted debugging, and AI-assisted documentation to keep delivery steady on production work.",
+            "Worked with GitHub Copilot, Claude Code, Gemini CLI, and Cursor as part of a repeatable development workflow."
+        ],
+        "employmentHistory": [
+            {
+                "title": "Technical Specialist",
+                "company": "Infovision",
+                "location": "Coimbatore",
+                "startDate": "Jul 2021",
+                "endDate": "Present",
+                "projects": [
+                    {
+                        "name": "Invisinet Console / Gateway Manager / Certificate Manager",
+                        "responsibilities": [
+                            "Lead the React applications for the Invisinet platform, coordinating UI work across Console, Gateway Manager, and Certificate Manager for a production-critical security workflow.",
+                            "Built reusable React and TypeScript components, state flows, and validation patterns for identity-driven security flows, keeping the codebase maintainable as the product evolves.",
+                            "Progressed an experimental React 18 to 19 migration by using use() where appropriate and trimming unnecessary useMemo and useCallback in the rewrite path.",
+                            "Used AI-assisted debugging, repo guidance, and documentation workflows to keep implementation and handoff notes consistent across multi-step changes."
+                        ]
+                    },
+                    {
+                        "name": "StackHub CLI",
+                        "responsibilities": [
+                            "Built StackHub as a TypeScript CLI and Node.js library that provisions Invisinet gateway instances on cloud platforms with Terraform under the hood.",
+                            "Shipped the tool for npx, terminal, and backend use so provisioning steps could be standardized across environments.",
+                            "Kept the interface small and reusable so the same package could be consumed in scripts and server-side projects."
+                        ]
+                    },
+                    {
+                        "name": "Real-time Mock Server",
+                        "responsibilities": [
+                            "Implemented a mock server for the React apps to simulate real network conditions and reduce repeated round trips to the server during testing.",
+                            "Used it to reproduce environment-specific cases faster and make UI validation less dependent on live infrastructure."
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Associate Software Engineer",
+                "company": "Accenture",
+                "location": "Chennai",
+                "startDate": "May 2019",
+                "endDate": "Jun 2020",
+                "projects": [
+                    {
+                        "name": "Optus Project (Australian Telecommunication)",
+                        "responsibilities": [
+                            "Migrated legacy tools from AngularJS to ReactJS, implementing modern React patterns and performance optimizations.",
+                            "Developed and maintained various tools using Java, Linux servers, Git version control, and Oracle/MySQL databases.",
+                            "Automated user account control system with Selenium and Java, improving efficiency and reducing manual workload.",
+                            "Collaborated with cross-functional teams using Agile methodology for timely delivery of project milestones."
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Junior Web Developer",
+                "company": "SPi Global (Straive)",
+                "location": "Chennai",
+                "startDate": "Sep 2018",
+                "endDate": "Apr 2019",
+                "responsibilities": [
+                    "Developed user-facing websites using PHP, JavaScript, and e-publishing tools.",
+                    "Maintained MySQL databases and Linux servers, establishing a strong foundation in back-end operations."
+                ]
+            }
+        ],
+        "education": [
+            {
+                "institution": "St. Joseph's College (Autonomous)",
+                "location": "Tiruchirappalli",
+                "degree": "Bachelor Of Computer Science",
+                "startDate": "Jun 2015",
+                "endDate": "Apr 2018"
+            }
+        ],
+        "skills": [
+            "JavaScript",
+            "TypeScript",
+            "React (Hooks, Context API, Suspense, use())",
+            "AI-Assisted Development",
+            "Context Engineering",
+            "Agentic Workflows",
+            "MCP",
+            "GitHub Copilot",
+            "Claude Code",
+            "Gemini CLI",
+            "Redux",
+            "Node.js",
+            "Express.js",
+            "AWS",
+            "Docker",
+            "Terraform",
+            "CLI Tooling",
+            "MongoDB (Learning)",
+            "HTML & CSS",
+            "TailwindCSS",
+            "Styled Components",
+            "Webpack/Vite",
+            "Git & Version Control",
+            "NPM Package Development",
+            "RESTful APIs",
+            "Jest & React Testing Library",
+            "Vim",
+            "Bash/Zsh Scripting",
+            "Agile Methodology"
+        ],
+        "ceritificates": [
+            {
+                "title": "Node.js, Express, MongoDB & More: The Complete Bootcamp",
+                "certId": "UC-42bdf6c1-aa63-4427-8d86-04735de39fd3",
+                "certUrl": "https://www.udemy.com/certificate/UC-42bdf6c1-aa63-4427-8d86-04735de39fd3/",
+                "certImageUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-42bdf6c1-aa63-4427-8d86-04735de39fd3.jpg"
+            },
+            {
+                "title": "Understanding TypeScript",
+                "certId": "UC-96224d18-4f7b-4139-b0f1-b3d9bf2f5539",
+                "certUrl": "https://www.udemy.com/certificate/UC-96224d18-4f7b-4139-b0f1-b3d9bf2f5539/",
+                "certImageUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-96224d18-4f7b-4139-b0f1-b3d9bf2f5539.jpg"
+            },
+            {
+                "title": "Vim Masterclass",
+                "certId": "UC-2aa08b20-2c4d-4eda-9250-fb2829cd3da6",
+                "certUrl": "https://www.udemy.com/certificate/UC-2aa08b20-2c4d-4eda-9250-fb2829cd3da6/",
+                "certImageUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-2aa08b20-2c4d-4eda-9250-fb2829cd3da6.jpg"
+            },
+            {
+                "title": "Bash Scripting and Shell Programming (Linux Command Line)",
+                "certId": "UC-926f5ddd-444e-43b5-a124-d16e8372ff6f",
+                "certUrl": "https://www.udemy.com/certificate/UC-926f5ddd-444e-43b5-a124-d16e8372ff6f/",
+                "certImageUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-926f5ddd-444e-43b5-a124-d16e8372ff6f.jpg"
+            }
+        ],
+        "languages": [
+            {
+                "language": "Tamil",
+                "proficiency": "Native speaker"
+            },
+            {
+                "language": "English",
+                "proficiency": "Native speaker"
+            }
         ]
-      },
-      {
-        "title": "Associate Software Engineer",
-        "company": "Accenture",
-        "location": "Chennai",
-        "startDate": "May 2019",
-        "endDate": "Jun 2020",
-        "projects": [
-          {
-            "name": "Optus Project (Australian Telecommunication)",
-            "responsibilities": [
-              "Migrated legacy tools from AngularJS to ReactJS, implementing modern React patterns and performance optimizations.",
-              "Developed and maintained various tools using Java, Linux servers, Git version control, and Oracle/MySQL databases.",
-              "Automated user account control system with Selenium and Java, improving efficiency and reducing manual workload.",
-              "Collaborated with cross-functional teams using Agile methodology for timely delivery of project milestones."
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Junior Web Developer",
-        "company": "SPi Global (Straive)",
-        "location": "Chennai",
-        "startDate": "Sep 2018",
-        "endDate": "Apr 2019",
-        "responsibilities": [
-          "Developed user-facing websites using PHP, JavaScript, and e-publishing tools.",
-          "Maintained MySQL databases and Linux servers, establishing a strong foundation in back-end operations."
-        ]
-      }
-    ],
-    "education": [
-      {
-        "institution": "St. Joseph's College (Autonomous)",
-        "location": "Tiruchirappalli",
-        "degree": "Bachelor Of Computer Science",
-        "startDate": "Jun 2015",
-        "endDate": "Apr 2018"
-      }
-    ],
-    "skills": [
-      "JavaScript",
-      "TypeScript",
-      "React (Hooks, Context API, Suspense, use())",
-      "AI-Assisted Development",
-      "Context Engineering",
-      "Agentic Workflows",
-      "MCP",
-      "GitHub Copilot",
-      "Claude Code",
-      "Gemini CLI",
-      "Redux",
-      "Node.js",
-      "Express.js",
-      "AWS",
-      "Docker",
-      "Terraform",
-      "CLI Tooling",
-      "MongoDB (Learning)",
-      "HTML & CSS",
-      "TailwindCSS",
-      "Styled Components",
-      "Webpack/Vite",
-      "Git & Version Control",
-      "NPM Package Development",
-      "RESTful APIs",
-      "Jest & React Testing Library",
-      "Vim",
-      "Bash/Zsh Scripting",
-      "Agile Methodology"
-    ],
-    "languages": [
-      { "language": "Tamil", "proficiency": "Native speaker" },
-      { "language": "English", "proficiency": "Native speaker" }
-    ]
-  }
+    }
 }
