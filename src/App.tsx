@@ -1,11 +1,16 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Terminal from "./components/Terminal/Terminal";
-import WeddingCounter from "./components/WeddingCounter/WeddingCounter";
 import Payload from "./assets/database/content.json";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import CopyRight from "./components/CopyRight";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Resume from "./components/Resume";
+
+const Resume = lazy(() => import("./components/Resume"));
+const WeddingCounter = lazy(
+  () => import("./components/WeddingCounter/WeddingCounter"),
+);
+const Certs = lazy(() => import("./components/Certs"));
+
 
 function App() {
   const [displayText, setDisplayText] = useState(""); // Tracks typed text
@@ -24,8 +29,30 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/resume" element={<Resume resume={Payload.resume} />} />
-        <Route path="/wedding" element={<WeddingCounter />} />
+        <Route
+          path="/resume"
+          element={
+            <Suspense fallback={<div className="p-8">Loading...</div>}>
+              <Resume resume={Payload.resume} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/wedding"
+          element={
+            <Suspense fallback={<div className="p-8">Loading...</div>}>
+              <WeddingCounter />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/certs"
+          element={
+            <Suspense fallback={<div className="p-8 text-[#FF003C]">Loading Certificates...</div>}>
+              <Certs />
+            </Suspense>
+          }
+        />
         <Route
           path="/"
           element={
@@ -37,6 +64,9 @@ function App() {
                 </a>
                 <a href="#projects">
                   <p>Projects</p>
+                </a>
+                <a href="/certs">
+                  <p>Certificates</p>
                 </a>
                 {/* <a href="/wedding">
                   <p>Wedding</p>
