@@ -167,7 +167,7 @@ function ResumePdfDocument({ resume }: { resume: ResumeType }) {
 
         {resume.aiEngineering && resume.aiEngineering.length > 0 && (
           <View style={pdfStyles.section} bookmark="AI-Assisted Development">
-            <Text style={pdfStyles.sectionTitle}>AI-Assisted Development</Text>
+            <Text style={pdfStyles.sectionTitle}>Technical Tooling & AI-Augmented Workflows</Text>
             {resume.aiEngineering.map((item, index) => (
               <Text key={index} style={pdfStyles.bulletItem}>
                 • {item}
@@ -383,7 +383,7 @@ function Resume({ resume }: { resume: ResumeType }) {
         {resume.aiEngineering && resume.aiEngineering.length > 0 && (
           <section className="mb-6">
             <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
-              AI-Assisted Development
+              Technical Tooling & AI-Augmented Workflows
             </h2>
             <ul className="list-disc list-inside text-sm">
               {resume.aiEngineering.map((item, index) => (
@@ -399,7 +399,7 @@ function Resume({ resume }: { resume: ResumeType }) {
           </h2>
           {resume.employmentHistory.map((job, index) => (
             <div key={index} className="mb-4">
-              <h3 className="text-lg font-bold">{job.title}</h3>
+              <h3 className="text-base font-semibold">{job.title}</h3>
               <p className="text-sm text-muted">
                 {job.company}, {job.location} | {job.startDate} - {job.endDate}
               </p>
