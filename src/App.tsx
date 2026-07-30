@@ -11,6 +11,16 @@ const WeddingCounter = lazy(
 );
 const Certs = lazy(() => import("./components/Certs"));
 
+interface GithubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  fork: boolean;
+  private: boolean;
+  topics: string[];
+  updated_at: string;
+}
 
 function App() {
   const [displayText, setDisplayText] = useState(""); // Tracks typed text
@@ -25,6 +35,28 @@ function App() {
       return () => clearTimeout(timeout);
     }
   }, [index]);
+
+  const [githubRepos, setGithubRepos] = useState<GithubRepo[]>([]);
+  const [reposLoading, setReposLoading] = useState(true);
+  const [reposError, setReposError] = useState(false);
+
+  useEffect(() => {
+    fetch(
+      "https://api.github.com/users/HeyProtagonist/repos?per_page=100&sort=updated",
+    )
+      .then((r) => r.json())
+      .then((data: GithubRepo[]) => {
+        const filtered = data.filter(
+          (r) => !r.fork && r.description && r.name !== "HeyProtagonist",
+        );
+        setGithubRepos(filtered);
+        setReposLoading(false);
+      })
+      .catch(() => {
+        setReposError(true);
+        setReposLoading(false);
+      });
+  }, []);
 
   return (
     <Router>
@@ -119,52 +151,66 @@ function App() {
                 </div>
 
                 <div className="w-full flex flex-col items-center py-8 px-2">
-                  {Payload.projects.map((project, index) => {
-                    return (
+                  {reposLoading ? (
+                    [1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="w-[90%] md:w-[60%] rounded-xl flex flex-col gap-4 p-4 m-4 outline-2 opacity-40 animate-pulse"
+                      >
+                        <div className="h-7 rounded w-1/2 bg-current opacity-10" />
+                        <div className="h-4 rounded w-full bg-current opacity-10" />
+                        <div className="h-4 rounded w-3/4 bg-current opacity-10" />
+                      </div>
+                    ))
+                  ) : reposError ? (
+                    <div className="text-center py-8">
+                      <p className="text-lg mb-4 opacity-70">
+                        Couldn't load repos.
+                      </p>
+                      <a
+                        href="https://github.com/HeyProtagonist"
+                        className="text-[#FF003C] font-semibold underline"
+                      >
+                        View GitHub profile
+                      </a>
+                    </div>
+                  ) : (
+                    githubRepos.map((repo) => (
                       <div
                         className="w-[90%] md:w-[60%] rounded-xl flex flex-col justify-between items-start gap-4 p-4 m-4 outline-2"
-                        key={`${project.name}-${index}`}
+                        key={repo.id}
                       >
-                        <p className="text-2xl font-black">{project.name}</p>
+                        <p className="text-2xl font-black">{repo.name}</p>
 
                         <p className="overflow-ellipsis text-lg">
-                          {project.description}
+                          {repo.description}
                         </p>
 
-                        <div className="w-full flex gap-4 flex-wrap my-10">
-                          {project.techStack.map(($) => {
-                            return (
+                        {repo.topics.length > 0 && (
+                          <div className="w-full flex gap-4 flex-wrap my-4">
+                            {repo.topics.map((topic) => (
                               <div
                                 className="px-2 outline-2 outline-[#80529d] text-[#80529d] dark:outline-[#39c4b6] dark:text-[#39c4b6] font-semibold rounded-lg"
-                                key={Math.random().toString(36)}
+                                key={topic}
                               >
-                                {$}
+                                {topic}
                               </div>
-                            );
-                          })}
-                        </div>
+                            ))}
+                          </div>
+                        )}
 
                         <div className="w-full flex justify-baseline items-center gap-4">
                           <button
                             onClick={() =>
-                              (window.location.href = project.live)
-                            }
-                            className="flex items-center gap-2 px-4 py-2"
-                          >
-                            <span>Live Demo</span>
-                          </button>
-
-                          <button
-                            onClick={() =>
-                              (window.location.href = project.github)
+                              (window.location.href = repo.html_url)
                             }
                           >
                             <span>View Source</span>
                           </button>
                         </div>
                       </div>
-                    );
-                  })}
+                    ))
+                  )}
                 </div>
               </div>
 
