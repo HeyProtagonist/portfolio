@@ -121,6 +121,10 @@
             "href": "mailto:ThisIsAnguram@gmail.com"
         },
         {
+            "name": "Twitter / X",
+            "href": "https://x.com/HeyProtagonist"
+        },
+        {
             "name": "Bluesky",
             "href": "https://bsky.app/profile/heyprotagonist.bsky.social"
         },
@@ -139,52 +143,86 @@
     ],
     "resume": {
         "name": "Anguram Shanmugam",
-        "title": "React Developer",
+        "title": "Lead Front End Developer",
         "location": "Coimbatore, Tamil Nadu",
         "contact": {
             "email": "ThisIsAnguram@gmail.com",
             "website": "https://anguram.dev"
         },
-        "profile": "I aim to be efficient and effective by writing less code that accomplishes more.",
+        "profile": "Front-end developer with 6+ years building React and TypeScript apps in production. I care about code quality, test coverage, and shipping on time. Ran code reviews, wrote JEST tests, worked with designers, backend, and product across Agile sprints. Less code when less is right.",
         "aiEngineering": [
-            "Use LLMs as an engineering assist layer for speed and exploration, while keeping architecture, code quality, and final decisions grounded in manual review.",
-            "Built repo-specific Copilot guidance in .github/copilot-instructions.md to keep AI-assisted work consistent and reduce repeated setup across sessions.",
-            "Used MCP servers and custom agent workflows to extend AI tools across React and Node.js tasks when changes span multiple steps.",
-            "Applied context engineering, AI-assisted debugging, and AI-assisted documentation to keep delivery steady on production work.",
-            "Worked with GitHub Copilot, Claude Code, Gemini CLI, and Cursor as part of a repeatable development workflow."
+            "Use GitHub Copilot, Claude Code, Gemini CLI, and Cursor day-to-day. Architecture decisions and code reviews stay manual.",
+            "Wrote a .github/copilot-instructions.md to keep AI output consistent with the team's conventions across sessions.",
+            "Used MCP servers and agentic workflows to coordinate multi-file React and Node.js changes without losing test coverage.",
+            "Used AI for debugging and documentation. Component specs, pattern guides, and handoff notes stay up to date without extra effort."
         ],
         "employmentHistory": [
             {
                 "title": "Technical Specialist",
                 "company": "Infovision",
                 "location": "Coimbatore",
-                "startDate": "Jul 2021",
+                "startDate": "Nov 2025",
                 "endDate": "Present",
                 "projects": [
                     {
                         "name": "Invisinet Console / Gateway Manager / Certificate Manager",
                         "responsibilities": [
-                            "Lead the React applications for the Invisinet platform, coordinating UI work across Console, Gateway Manager, and Certificate Manager for a production-critical security workflow.",
-                            "Built reusable React and TypeScript components, state flows, and validation patterns for identity-driven security flows, keeping the codebase maintainable as the product evolves.",
-                            "Progressed an experimental React 18 to 19 migration by using use() where appropriate and trimming unnecessary useMemo and useCallback in the rewrite path.",
-                            "Used AI-assisted debugging, repo guidance, and documentation workflows to keep implementation and handoff notes consistent across multi-step changes."
+                            "Led front-end work across Console, Gateway Manager, and Certificate Manager: three React apps on a production security platform.",
+                            "Built reusable TypeScript components with strict typing, state management, and form validation. Kept the codebase clean as the product grew.",
+                            "Ran code reviews, set coding standards, and gave structured feedback to the team.",
+                            "Worked with backend engineers, QA, and product to estimate effort, scope features, and ship on time.",
+                            "Wrote JEST unit tests for components and state logic. Added Storybook to document and test UI in isolation.",
+                            "Ran a React 18→19 migration experiment. Applied use() hooks and cut unnecessary useMemo and useCallback calls."
                         ]
                     },
                     {
                         "name": "StackHub CLI",
                         "responsibilities": [
-                            "Built StackHub as a TypeScript CLI and Node.js library that provisions Invisinet gateway instances on cloud platforms with Terraform under the hood.",
-                            "Shipped the tool for npx, terminal, and backend use so provisioning steps could be standardized across environments.",
-                            "Kept the interface small and reusable so the same package could be consumed in scripts and server-side projects."
+                            "Built StackHub, a TypeScript CLI and Node.js library that provisions Invisinet gateway instances on AWS via Terraform.",
+                            "Wrote documentation and usage guides so other engineers could pick it up without handholding.",
+                            "Kept the API small so the same package works in scripts and server-side code."
                         ]
                     },
                     {
                         "name": "Real-time Mock Server",
                         "responsibilities": [
-                            "Implemented a mock server for the React apps to simulate real network conditions and reduce repeated round trips to the server during testing.",
-                            "Used it to reproduce environment-specific cases faster and make UI validation less dependent on live infrastructure."
+                            "Built a mock server to simulate real network conditions so the team could test UI without hitting live infrastructure.",
+                            "Cut test cycle time by letting engineers reproduce edge cases locally before pushing to production."
                         ]
                     }
+                ]
+            },
+            {
+                "title": "Senior Software Engineer",
+                "company": "Infovision",
+                "location": "Coimbatore",
+                "startDate": "Apr 2024",
+                "endDate": "Nov 2025",
+                "responsibilities": [
+                    "Led front-end architecture across multiple production React apps.",
+                    "Introduced Storybook and JEST coverage standards across the team."
+                ]
+            },
+            {
+                "title": "Software Engineer",
+                "company": "Infovision",
+                "location": "Coimbatore",
+                "startDate": "Apr 2022",
+                "endDate": "Apr 2024",
+                "responsibilities": [
+                    "Built TypeScript components and state management for Invisinet platform.",
+                    "Ran code reviews and worked with QA and backend on sprint delivery."
+                ]
+            },
+            {
+                "title": "Technology Engineer",
+                "company": "Infovision",
+                "location": "Coimbatore",
+                "startDate": "Jul 2021",
+                "endDate": "Apr 2022",
+                "responsibilities": [
+                    "Joined as individual contributor. Ramped up on React production codebase.",
+                    "Built UI features, fixed bugs, and shipped customer-facing changes."
                 ]
             },
             {
@@ -197,10 +235,11 @@
                     {
                         "name": "Optus Project (Australian Telecommunication)",
                         "responsibilities": [
-                            "Migrated legacy tools from AngularJS to ReactJS, implementing modern React patterns and performance optimizations.",
-                            "Developed and maintained various tools using Java, Linux servers, Git version control, and Oracle/MySQL databases.",
-                            "Automated user account control system with Selenium and Java, improving efficiency and reducing manual workload.",
-                            "Collaborated with cross-functional teams using Agile methodology for timely delivery of project milestones."
+                            "Migrated legacy AngularJS tools to ReactJS with modern component patterns and better state management.",
+                            "Took part in sprint planning, code reviews, and retrospectives across Agile sprints.",
+                            "Worked with backend, QA, and product teams to scope requirements and ship customer-facing features.",
+                            "Automated user account control workflows with Selenium and Java.",
+                            "Maintained Oracle/MySQL databases and Linux servers."
                         ]
                     }
                 ]
@@ -212,8 +251,8 @@
                 "startDate": "Sep 2018",
                 "endDate": "Apr 2019",
                 "responsibilities": [
-                    "Developed user-facing websites using PHP, JavaScript, and e-publishing tools.",
-                    "Maintained MySQL databases and Linux servers, establishing a strong foundation in back-end operations."
+                    "Built user-facing websites in PHP and JavaScript.",
+                    "Maintained MySQL databases and Linux servers."
                 ]
             }
         ],
@@ -227,35 +266,32 @@
             }
         ],
         "skills": [
-            "JavaScript",
-            "TypeScript",
             "React (Hooks, Context API, Suspense, use())",
-            "AI-Assisted Development",
-            "Context Engineering",
-            "Agentic Workflows",
-            "MCP",
-            "GitHub Copilot",
-            "Claude Code",
-            "Gemini CLI",
-            "Redux",
+            "TypeScript",
+            "JavaScript (ES6+)",
+            "JEST & React Testing Library",
+            "Storybook",
+            "Code Reviews & Pair Programming",
+            "State Management (Redux, Context API)",
+            "RESTful APIs & Async Programming",
+            "Front-End Performance Optimization",
+            "Component-Based Architecture",
+            "CI/CD Pipelines",
+            "Agile / Scrum",
+            "Git & Version Control",
             "Node.js",
             "Express.js",
-            "AWS",
-            "Docker",
-            "Terraform",
-            "CLI Tooling",
-            "MongoDB (Learning)",
             "HTML & CSS",
             "TailwindCSS",
             "Styled Components",
-            "Webpack/Vite",
-            "Git & Version Control",
+            "Webpack / Vite",
             "NPM Package Development",
-            "RESTful APIs",
-            "Jest & React Testing Library",
-            "Vim",
+            "AWS",
+            "Docker",
+            "Terraform",
             "Bash/Zsh Scripting",
-            "Agile Methodology"
+            "AI-Assisted Development (GitHub Copilot, Claude Code, Gemini CLI)",
+            "Context Engineering & Agentic Workflows"
         ],
         "ceritificates": [
             {
