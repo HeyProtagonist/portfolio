@@ -29,43 +29,51 @@ function Terminal({ payload }: MyComponentProps): JSX.Element {
 
   return (
     <div className="w-full px-2 py-4">
-      <div className="w-full h-10 rounded-t-xl flex justify-end items-center px-4 gap-4 bg-[#D1C5C0]">
-        <div className="outline-black w-5 h-5">
-          <img src={MinimizeIcon} alt="_" />
+      <div className="cp-cut-frame w-full">
+        <div className="w-full h-10 flex justify-end items-center px-4 gap-4 bg-(--cp-edge)">
+          {/* Masked so the icon color comes from CSS (an <img> SVG can't inherit it) */}
+          {[
+            { icon: MinimizeIcon, label: "_" },
+            { icon: MaximizeIcon, label: "D" },
+            { icon: CloseIcon, label: "X" },
+          ].map(({ icon, label }) => (
+            <span
+              key={label}
+              role="img"
+              aria-label={label}
+              className="cp-term-icon w-5 h-5"
+              style={{
+                maskImage: `url("${icon}")`,
+                WebkitMaskImage: `url("${icon}")`,
+              }}
+            />
+          ))}
         </div>
 
-        <div className="outline-black w-5 h-5">
-          <img src={MaximizeIcon} alt="D" />
+        <div className="w-full bg-black/60 px-2 py-4 flex flex-col text-xl gap-4">
+          {payload.about.map(({ question, answer }) => {
+            return (
+              <div
+                className="w-full py-2 flex flex-col"
+                key={`${question}-${Math.random().toString(36)}`}
+              >
+                <p className="text-cp-yellow dark:text-[#FF003C] font-semibold">
+                  <span className="font-[--JetBrains] px-2">{">"}</span>
+                  {firstName}.{question}
+                </p>
+
+                <p className="px-6 text-wrap text-[#00F0FF]">
+                  {renderAnswer(answer)}
+                </p>
+              </div>
+            );
+          })}
+
+          <p className="text-cp-yellow dark:text-[#FF003C] font-semibold">
+            <span className="font-[--JetBrains] px-2">{">"}</span>
+            <span className="inline-block w-2 h-4 bg-[#FCEE09] ml-1 animate-blink"></span>
+          </p>
         </div>
-
-        <div className="outline-black w-5 h-5">
-          <img src={CloseIcon} alt="X" />
-        </div>
-      </div>
-
-      <div className="w-full rounded-b-xl bg-black px-2 py-4 flex flex-col text-xl gap-4">
-        {payload.about.map(({ question, answer }) => {
-          return (
-            <div
-              className="w-full py-2 flex flex-col"
-              key={`${question}-${Math.random().toString(36)}`}
-            >
-              <p className="text-[#FF003C] font-semibold">
-                <span className="font-[--JetBrains] px-2">{">"}</span>
-                {firstName}.{question}
-              </p>
-
-              <p className="px-6 text-wrap text-[#00F0FF]">
-                {renderAnswer(answer)}
-              </p>
-            </div>
-          );
-        })}
-
-        <p className="text-[#FF003C] font-semibold">
-          <span className="font-[--JetBrains] px-2">{">"}</span>
-          <span className="inline-block w-2 h-4 bg-[#FCEE09] ml-1 animate-blink"></span>
-        </p>
       </div>
     </div>
   );

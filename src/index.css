@@ -251,6 +251,322 @@
 @theme {
   --JetBrains: "JetBrains Mono Variable", Inter, system-ui, Avenir, helvetica,
     Arial;
+  --color-cp-yellow: #f6f132;
+  --color-cp-blue: #83ebfe;
+  --color-cp-red: #e0403d;
+  --color-cp-cdpr: #d6392b;
+}
+
+/* Cyberpunk-inspired tokens: red accent on light, blue accent on dark */
+:root {
+  --cp-bg: #f6f9fc;
+  --cp-accent: var(--color-cp-red);
+  /* Container fill: the opposite Cyberpunk color at 10% alpha, so the grid shows through */
+  --cp-surface: color-mix(in srgb, var(--color-cp-blue) 10%, transparent);
+  /* Cut-frame outline: red reads on the light page, yellow on the dark one */
+  --cp-edge: var(--color-cp-red);
+  --cp-bar: #0d0d0d;
+  --cp-cut: 18px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cp-bg: #011627;
+    --cp-accent: var(--color-cp-blue);
+    --cp-edge: var(--color-cp-yellow);
+    --cp-surface: color-mix(in srgb, var(--color-cp-red) 10%, transparent);
+  }
+}
+
+/* Dotted grid backdrop */
+.cp-grid-bg {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--cp-accent) 35%, transparent) 1px,
+    transparent 1.5px
+  );
+  background-size: 70px 70px;
+  background-position: 35px 35px;
+}
+
+/* Menu bar: dark plate with cut top-left corner and yellow edge */
+/* Cut-corner outline (top-left and bottom-right) with a yellow edge; shared by the menu bar and terminal */
+.cp-cut-frame {
+  position: relative;
+  border: 1px solid var(--cp-edge);
+  clip-path: polygon(
+    var(--cp-cut) 0,
+    100% 0,
+    100% calc(100% - var(--cp-cut)),
+    calc(100% - var(--cp-cut)) 100%,
+    0 100%,
+    0 var(--cp-cut)
+  );
+}
+
+/* Edge along both diagonals */
+.cp-cut-frame::before,
+.cp-cut-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: var(--cp-cut);
+  height: var(--cp-cut);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom right,
+    transparent calc(50% - 1px),
+    var(--cp-edge) calc(50% - 1px),
+    var(--cp-edge) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+}
+
+.cp-cut-frame::before {
+  top: -1px;
+  left: -1px;
+}
+
+.cp-cut-frame::after {
+  right: -1px;
+  bottom: -1px;
+}
+
+.cp-nav {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 3.25rem;
+  margin-left: auto;
+  background: color-mix(in srgb, var(--cp-bar) 75%, transparent);
+  /* The CTA runs to the right edge, so no right border */
+  border-right: none;
+}
+
+.cp-nav-links {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: var(--cp-cut);
+}
+
+.cp-nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.cp-nav-link {
+  color: #f6f9fc !important;
+  padding: 0 0.5rem;
+}
+
+.cp-nav-link:hover {
+  color: var(--color-cp-yellow) !important;
+}
+
+/* Call to action block: solid yellow, cut bottom-right corner */
+.cp-nav-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem 0 1.5rem;
+  background: var(--color-cp-yellow);
+  color: #0d0d0d !important;
+  font-weight: 700 !important;
+  transition: background-color 0.2s ease;
+}
+
+.cp-nav-cta:hover {
+  background: var(--color-cp-blue);
+}
+
+@media (min-width: 768px) {
+  .cp-cut-frame {
+    --cp-cut: 24px;
+  }
+
+  .cp-nav {
+    width: fit-content;
+    height: 3.75rem;
+  }
+
+  .cp-nav-links {
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+    padding-left: calc(var(--cp-cut) + 1.5rem);
+  }
+
+  .cp-nav-cta {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Outline button: cut bottom-right corner and a notch on the left edge.
+   Edges are real borders and gradients (no opaque inner layer), so the fill can stay translucent. */
+.cp-btn {
+  --cp-notch-top: 42%;
+  --cp-notch-h: 8px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  padding: 0.7em 2.5em;
+  border: 2px solid var(--cp-accent);
+  border-left: none;
+  border-radius: 0;
+  background-color: var(--cp-surface);
+  color: var(--cp-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-decoration: none !important;
+  cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%
+  );
+  transition: background-color 0.2s ease;
+}
+
+/* Left edge in two pieces, leaving a gap where the notch opens. Repeated under
+   :hover because the global button:hover background shorthand would reset it. */
+.cp-btn,
+.cp-btn:hover {
+  background-image: linear-gradient(var(--cp-accent), var(--cp-accent)),
+    linear-gradient(var(--cp-accent), var(--cp-accent));
+  background-repeat: no-repeat;
+  background-size:
+    2px var(--cp-notch-top),
+    2px calc(100% - var(--cp-notch-top) - var(--cp-notch-h));
+  background-position:
+    0 0,
+    0 100%;
+}
+
+/* Edge along the cut corner */
+.cp-btn::before {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom right,
+    transparent calc(50% - 2px),
+    var(--cp-accent) calc(50% - 2px),
+    var(--cp-accent) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+}
+
+/* The notch: a small tab that runs inward from the left edge */
+.cp-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--cp-notch-top);
+  width: 22px;
+  height: var(--cp-notch-h);
+  border: 2px solid var(--cp-accent);
+  border-left: none;
+  pointer-events: none;
+}
+
+.cp-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cp-btn:hover {
+  background-color: var(--cp-accent);
+  /* Beat the global button:hover border color so <button>s match the link versions */
+  border-color: var(--cp-accent);
+  color: var(--cp-bg);
+}
+
+/* Keep the notch readable once the button fills */
+.cp-btn:hover::after {
+  background: var(--cp-bg);
+}
+
+.cp-btn:focus-visible {
+  box-shadow: none;
+  outline: 2px solid var(--color-cp-yellow);
+  outline-offset: 4px;
+}
+
+/* Section header: rule, mono module label, meta on the right */
+.cp-section-head {
+  border-top: 1px solid color-mix(in srgb, var(--cp-accent) 40%, transparent);
+  padding-top: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--JetBrains);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--cp-accent);
+}
+
+/* Framed panel with square accent border */
+.cp-frame {
+  border: 3px solid var(--cp-accent);
+  background: var(--cp-surface);
+}
+
+/* Square filter chip: outline when idle, yellow when active */
+.cp-chip {
+  border: 1px solid var(--cp-accent);
+  border-radius: 0;
+  background: var(--cp-surface);
+  color: var(--cp-accent);
+  padding: 0.25em 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cp-btn,
+.cp-chip {
+  outline: none;
+}
+
+.cp-chip:focus-visible {
+  box-shadow: none;
+  outline: 2px solid var(--color-cp-yellow);
+  outline-offset: 2px;
+}
+
+.cp-chip:hover,
+.cp-chip[aria-pressed="true"] {
+  background: var(--color-cp-yellow);
+  border-color: var(--color-cp-yellow);
+  color: #0d0d0d;
+}
+
+/* Text input with accent outline and cut corner */
+.cp-input {
+  width: 100%;
+  border: 2px solid var(--cp-accent);
+  background: var(--cp-surface);
+  color: inherit;
+  font-family: var(--JetBrains);
+  font-size: 0.9rem;
+}
+
+.cp-input:focus {
+  outline: none;
+  border-color: var(--color-cp-yellow);
 }
 
 :root {
@@ -435,5 +751,23 @@ button:focus-visible {
   button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.5);
+  }
+}
+
+/* Terminal window icons: page color on the red bar in light mode, black on yellow in dark */
+.cp-term-icon {
+  display: inline-block;
+  background: var(--cp-bg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cp-term-icon {
+    background: #000;
   }
 }
