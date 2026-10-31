@@ -8,6 +8,12 @@ import {
   View,
   usePDF,
 } from "@react-pdf/renderer";
+import { calculateYearsOfExperience } from "../utils/calculateYearsOfExperience";
+
+type SkillGroup = {
+  category: string;
+  items: string[];
+};
 
 type ResumeType = {
   name: string;
@@ -19,7 +25,7 @@ type ResumeType = {
     website: string;
   };
   profile: string;
-  aiEngineering?: string[];
+  aiEngineering?: SkillGroup[];
   employmentHistory: {
     title: string;
     company: string;
@@ -39,7 +45,7 @@ type ResumeType = {
     startDate: string;
     endDate: string;
   }[];
-  skills: string[];
+  skills: SkillGroup[];
   languages: {
     language: string;
     proficiency: string;
@@ -127,6 +133,9 @@ const pdfStyles = StyleSheet.create({
     lineHeight: 1.3,
     marginBottom: 1,
   },
+  groupLabel: {
+    fontWeight: "bold",
+  },
   bulletItem: {
     fontSize: 10.25,
     lineHeight: 1.4,
@@ -135,7 +144,13 @@ const pdfStyles = StyleSheet.create({
   },
 });
 
+function withExperience(profile: string, history: ResumeType["employmentHistory"]) {
+  const years = Math.floor(calculateYearsOfExperience(history));
+  return profile.replace("<overallExperience>", String(years));
+}
+
 function ResumePdfDocument({ resume }: { resume: ResumeType }) {
+  const profile = withExperience(resume.profile, resume.employmentHistory);
   return (
     <Document
       title={`${resume.name} Resume`}
@@ -162,15 +177,16 @@ function ResumePdfDocument({ resume }: { resume: ResumeType }) {
 
         <View style={pdfStyles.section} bookmark="Professional Summary">
           <Text style={pdfStyles.sectionTitle}>Professional Summary</Text>
-          <Text style={pdfStyles.paragraph}>{resume.profile}</Text>
+          <Text style={pdfStyles.paragraph}>{profile}</Text>
         </View>
 
         {resume.aiEngineering && resume.aiEngineering.length > 0 && (
           <View style={pdfStyles.section} bookmark="AI-Assisted Development">
-            <Text style={pdfStyles.sectionTitle}>Technical Tooling & AI-Augmented Workflows</Text>
-            {resume.aiEngineering.map((item, index) => (
+            <Text style={pdfStyles.sectionTitle}>AI-Assisted Development</Text>
+            {resume.aiEngineering.map((group, index) => (
               <Text key={index} style={pdfStyles.bulletItem}>
-                • {item}
+                • <Text style={pdfStyles.groupLabel}>{group.category}:</Text>{" "}
+                {group.items.join(", ")}
               </Text>
             ))}
           </View>
@@ -218,20 +234,21 @@ function ResumePdfDocument({ resume }: { resume: ResumeType }) {
 
         <View style={pdfStyles.section} bookmark="Skills">
           <Text style={pdfStyles.sectionTitle}>Skills</Text>
-          {resume.skills.map((skill, index) => (
+          {resume.skills.map((group, index) => (
             <Text key={index} style={pdfStyles.bulletItem}>
-              • {skill}
+              • <Text style={pdfStyles.groupLabel}>{group.category}:</Text>{" "}
+              {group.items.join(", ")}
             </Text>
           ))}
         </View>
 
         <View bookmark="Languages">
           <Text style={pdfStyles.sectionTitle}>Languages</Text>
-          {resume.languages.map((lang, index) => (
-            <Text key={index} style={pdfStyles.bulletItem}>
-              • {lang.language} - {lang.proficiency}
-            </Text>
-          ))}
+          <Text style={pdfStyles.bulletItem}>
+            {resume.languages
+              .map((lang) => `• ${lang.language} (${lang.proficiency})`)
+              .join("     ")}
+          </Text>
         </View>
       </Page>
     </Document>
@@ -240,6 +257,7 @@ function ResumePdfDocument({ resume }: { resume: ResumeType }) {
 
 function Resume({ resume }: { resume: ResumeType }) {
   const [pendingDownload, setPendingDownload] = useState(false);
+  const profile = withExperience(resume.profile, resume.employmentHistory);
   const pdfDocument = useMemo(
     () => <ResumePdfDocument resume={resume} />,
     [resume],
@@ -377,17 +395,19 @@ function Resume({ resume }: { resume: ResumeType }) {
           <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
             Professional Summary
           </h2>
-          <p className="text-sm">{resume.profile}</p>
+          <p className="text-sm">{profile}</p>
         </section>
 
         {resume.aiEngineering && resume.aiEngineering.length > 0 && (
           <section className="mb-6">
             <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
-              Technical Tooling & AI-Augmented Workflows
+              AI-Assisted Development
             </h2>
             <ul className="list-disc list-inside text-sm">
-              {resume.aiEngineering.map((item, index) => (
-                <li key={index}>{item}</li>
+              {resume.aiEngineering.map((group, index) => (
+                <li key={index}>
+                  <strong>{group.category}:</strong> {group.items.join(", ")}
+                </li>
               ))}
             </ul>
           </section>
@@ -448,8 +468,10 @@ function Resume({ resume }: { resume: ResumeType }) {
             Skills
           </h2>
           <ul className="list-disc list-inside text-sm">
-            {resume.skills.map((skill, index) => (
-              <li key={index}>{skill}</li>
+            {resume.skills.map((group, index) => (
+              <li key={index}>
+                <strong>{group.category}:</strong> {group.items.join(", ")}
+              </li>
             ))}
           </ul>
         </section>
@@ -458,10 +480,10 @@ function Resume({ resume }: { resume: ResumeType }) {
           <h2 className="text-2xl font-semibold border-b-2 pb-1 mb-4">
             Languages
           </h2>
-          <ul className="list-disc list-inside text-sm">
+          <ul className="list-disc list-inside text-sm flex flex-wrap gap-x-8">
             {resume.languages.map((lang, index) => (
               <li key={index}>
-                {lang.language} - {lang.proficiency}
+                {lang.language} ({lang.proficiency})
               </li>
             ))}
           </ul>

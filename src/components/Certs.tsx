@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  ExternalLink,
-  Copy,
-  Check,
-  Search,
-  X,
-  Eye,
-} from "lucide-react";
+import { ExternalLink, Copy, Check, Search, X, Eye } from "lucide-react";
 import Payload from "../assets/database/content.json";
+import NavBar from "./NavBar";
+import SectionHeader from "./SectionHeader";
+import CopyRight from "./CopyRight";
 
 interface Certificate {
   title: string;
@@ -96,299 +91,297 @@ function Certs() {
   };
 
   return (
-    <div className="w-[100vw] md:w-[1000px] m-0 p-0 md:flex md:flex-col md:justify-start md:items-center md:gap-4 md:mx-auto">
-      {/* Nav — same style as home page header */}
-      <div className="w-full p-8 h-[8vh] font-semibold flex justify-between items-center md:text-xl text-[#FF003C]">
-        <Link to="/" className="flex items-center gap-1">
-          ← Back
-        </Link>
-        <div className="flex items-center gap-10">
-          <a href="/resume">
-            <p>Resume</p>
-          </a>
-        </div>
-      </div>
+    <div className="cp-grid-bg min-h-screen">
+      <div className="w-[100vw] md:w-[1000px] m-0 p-0 md:flex md:flex-col md:justify-start md:items-center md:gap-4 md:mx-auto">
+        <NavBar
+          links={[
+            { label: "Home", href: "/" },
+            { label: "Projects", href: "/#projects" },
+            { label: "Contact", href: "/#contact-me" },
+          ]}
+          cta={{ label: "Resume", href: "/resume" }}
+        />
 
-      {/* Section header — same pattern as home page sections */}
-      <div className="w-full py-8 flex flex-col justify-center items-center gap-3">
-        <p className="text-4xl font-black">Certificates</p>
-        <div className="w-20 h-2 bg-[#FF003C]" />
-        <p className="text-center opacity-60 max-w-md mt-2 px-4">
-          Courses and training across backend engineering, systems, and
-          developer tooling.
-        </p>
-      </div>
-
-      {/* Search + Filter */}
-      <div className="w-full px-4 mb-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        {/* Search input */}
-        <div className="relative w-full md:max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-50 pointer-events-none" />
-          <input
-            id="cert-search"
-            type="text"
-            placeholder="Search certificates..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border-2 border-current bg-transparent focus:outline-none transition-colors"
-            style={{ fontFamily: "inherit" }}
+        {/* Section header — same pattern as home page sections */}
+        <div className="w-full">
+          <SectionHeader
+            module="CERTS.MODULE_ARCHIVE"
+            title="Certificates"
+            meta={`${certificates.length} CREDENTIALS`}
           />
+          <p className="opacity-70 max-w-md px-2 -mt-2 mb-4">
+            Courses and training across backend engineering, systems, and
+            developer tooling.
+          </p>
         </div>
 
-        {/* Tag filter pills */}
-        <div className="flex flex-wrap gap-2">
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              id={`cert-filter-${tag.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-              onClick={() => setSelectedTag(tag)}
-              className={
-                selectedTag === tag
-                  ? "text-sm !bg-[#FF003C] !border-[#FF003C] !text-[#f6f9fc]"
-                  : "text-sm"
-              }
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-      </div>
+        {/* Search + Filter */}
+        <div className="w-full px-2 mb-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          {/* Search input */}
+          <div className="relative w-full md:max-w-sm">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-50 pointer-events-none" />
+            <input
+              id="cert-search"
+              type="text"
+              placeholder="Search certificates..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="cp-input pl-10 pr-4 py-2"
+            />
+          </div>
 
-      {/* Certificate Cards */}
-      <div className="w-full px-4 py-4">
-        {filteredCertificates.length > 0 ? (
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredCertificates.map((cert) => {
-              const tags = getTagsForCertificate(cert.title);
-              return (
-                <div
-                  key={cert.certId}
-                  className="rounded-xl flex flex-col justify-between gap-4 p-4 outline-2"
-                >
-                  {/* Thumbnail with quick view overlay */}
+          {/* Tag filter pills */}
+          <div className="flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                id={`cert-filter-${tag.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
+                onClick={() => setSelectedTag(tag)}
+                aria-pressed={selectedTag === tag}
+                className="cp-chip"
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Certificate Cards */}
+        <div className="w-full px-2 py-4">
+          {filteredCertificates.length > 0 ? (
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filteredCertificates.map((cert) => {
+                const tags = getTagsForCertificate(cert.title);
+                return (
                   <div
-                    className="relative w-full aspect-video overflow-hidden rounded-lg cursor-pointer group"
-                    onClick={() => setLightboxCert(cert)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") setLightboxCert(cert);
-                    }}
-                    aria-label={`Quick view: ${cert.title}`}
+                    key={cert.certId}
+                    className="cp-frame flex flex-col justify-between gap-4 p-4"
                   >
-                    <img
-                      src={cert.certImageUrl}
-                      alt={cert.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold"
-                        style={{ background: "#FF003C", color: "#f6f9fc" }}
-                      >
-                        <Eye className="w-4 h-4" />
-                        Quick View
+                    {/* Thumbnail with quick view overlay */}
+                    <div
+                      className="relative w-full aspect-video overflow-hidden cursor-pointer group"
+                      onClick={() => setLightboxCert(cert)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") setLightboxCert(cert);
+                      }}
+                      aria-label={`Quick view: ${cert.title}`}
+                    >
+                      <img
+                        src={cert.certImageUrl}
+                        alt={cert.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="flex items-center gap-2 px-3 py-1.5 text-sm font-bold uppercase bg-cp-yellow text-[#0d0d0d]">
+                          <Eye className="w-4 h-4" />
+                          Quick View
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Tags — same chip style as home page project tech stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 outline-2 outline-[#80529d] text-[#80529d] dark:outline-[#39c4b6] dark:text-[#39c4b6] font-semibold rounded-lg"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Title */}
-                  <p className="text-xl font-bold leading-snug">{cert.title}</p>
-
-                  {/* Credential ID + actions */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between gap-2 opacity-50">
-                      <span className="font-mono text-xs truncate">
-                        ID: {cert.certId}
-                      </span>
-                      <button
-                        onClick={() => handleCopyId(cert.certId)}
-                        title="Copy Certificate ID"
-                        aria-label="Copy certificate ID"
-                        style={{
-                          border: "none",
-                          background: "transparent",
-                          padding: "4px",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          lineHeight: 0,
-                        }}
-                      >
-                        {copiedId === cert.certId ? (
-                          <Check
-                            className="w-4 h-4"
-                            style={{ color: "#22c55e" }}
-                          />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </button>
+                    {/* Tags — same chip style as home page project tech stack */}
+                    <div className="flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 bg-cp-yellow text-[#0d0d0d] font-semibold uppercase text-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
 
-                    <a
-                      href={cert.certUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 py-2 rounded-lg font-semibold text-sm"
-                      style={{
-                        border: "2px solid currentColor",
-                        textDecoration: "none",
-                      }}
-                    >
-                      Verify Credential
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="w-full text-center py-16">
-            <p className="text-2xl font-bold mb-2">No certificates found</p>
-            <p className="opacity-60 mb-6">
-              No match for &ldquo;{searchQuery}&rdquo; under &ldquo;
-              {selectedTag}&rdquo;.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedTag("All");
-              }}
-            >
-              Clear Filters
-            </button>
-          </div>
-        )}
-      </div>
+                    {/* Title */}
+                    <p className="text-xl font-bold uppercase leading-snug text-(--cp-accent)">
+                      {cert.title}
+                    </p>
 
-      {/* Lightbox */}
-      {lightboxCert && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 animate-fadeIn"
-          onClick={() => setLightboxCert(null)}
-        >
-          <div
-            className="relative max-w-4xl w-full rounded-xl overflow-hidden shadow-2xl animate-scaleUp"
-            style={{ backgroundColor: "#011627" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal header */}
-            <div
-              className="p-4 flex items-center justify-between"
-              style={{
-                borderBottom: "1px solid rgba(255,255,255,0.1)",
-                color: "#f6f9fc",
-              }}
-            >
-              <p className="font-bold text-lg truncate pr-4">
-                {lightboxCert.title}
+                    {/* Credential ID + actions */}
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center justify-between gap-2 opacity-50">
+                        <span className="font-mono text-xs truncate">
+                          ID: {cert.certId}
+                        </span>
+                        <button
+                          onClick={() => handleCopyId(cert.certId)}
+                          title="Copy Certificate ID"
+                          aria-label="Copy certificate ID"
+                          style={{
+                            border: "none",
+                            background: "transparent",
+                            padding: "4px",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            lineHeight: 0,
+                          }}
+                        >
+                          {copiedId === cert.certId ? (
+                            <Check
+                              className="w-4 h-4"
+                              style={{ color: "#22c55e" }}
+                            />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
+                      </div>
+
+                      <a
+                        href={cert.certUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cp-btn w-full text-sm"
+                      >
+                        <span className="flex items-center gap-2">
+                          Verify Credential
+                          <ExternalLink className="w-4 h-4" />
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="w-full text-center py-16">
+              <p className="text-2xl font-bold mb-2">No certificates found</p>
+              <p className="opacity-60 mb-6">
+                No match for &ldquo;{searchQuery}&rdquo; under &ldquo;
+                {selectedTag}&rdquo;.
               </p>
               <button
-                onClick={() => setLightboxCert(null)}
-                aria-label="Close"
-                style={{
-                  border: "none",
-                  background: "transparent",
-                  color: "#f6f9fc",
-                  padding: "4px",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  flexShrink: 0,
-                  lineHeight: 0,
+                className="cp-btn"
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedTag("All");
                 }}
               >
-                <X className="w-6 h-6" />
+                <span>Clear Filters</span>
               </button>
             </div>
+          )}
+        </div>
 
-            {/* Certificate image */}
+        {/* Lightbox */}
+        {lightboxCert && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 animate-fadeIn"
+            onClick={() => setLightboxCert(null)}
+          >
             <div
-              className="flex items-center justify-center bg-black"
-              style={{ aspectRatio: "16/9" }}
+              className="relative max-w-4xl w-full overflow-hidden shadow-2xl animate-scaleUp border-3 border-cp-blue"
+              style={{ backgroundColor: "#0d0d0d" }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={lightboxCert.certImageUrl}
-                alt={lightboxCert.title}
-                className="max-h-[70vh] max-w-full object-contain"
-              />
-            </div>
-
-            {/* Modal footer */}
-            <div
-              className="p-4 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between"
-              style={{
-                borderTop: "1px solid rgba(255,255,255,0.1)",
-                backgroundColor: "rgba(0,0,0,0.3)",
-              }}
-            >
-              <span
-                className="font-mono text-xs"
-                style={{ color: "rgba(246,249,252,0.5)" }}
+              {/* Modal header */}
+              <div
+                className="p-4 flex items-center justify-between"
+                style={{
+                  borderBottom: "1px solid rgba(255,255,255,0.1)",
+                  color: "#f6f9fc",
+                }}
               >
-                {lightboxCert.certId}
-              </span>
-              <div className="flex gap-2">
+                <p className="font-bold text-lg truncate pr-4">
+                  {lightboxCert.title}
+                </p>
                 <button
-                  onClick={() => handleCopyId(lightboxCert.certId)}
-                  className="flex items-center gap-2 text-sm px-3 py-1.5"
+                  onClick={() => setLightboxCert(null)}
+                  aria-label="Close"
                   style={{
-                    border: "2px solid rgba(246,249,252,0.3)",
+                    border: "none",
                     background: "transparent",
                     color: "#f6f9fc",
+                    padding: "4px",
                     cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    flexShrink: 0,
+                    lineHeight: 0,
                   }}
                 >
-                  {copiedId === lightboxCert.certId ? (
-                    <>
-                      <Check
-                        className="w-4 h-4"
-                        style={{ color: "#22c55e" }}
-                      />
-                      <span>Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      <span>Copy ID</span>
-                    </>
-                  )}
+                  <X className="w-6 h-6" />
                 </button>
+              </div>
 
-                <a
-                  href={lightboxCert.certUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg font-semibold"
-                  style={{
-                    background: "#FF003C",
-                    color: "#f6f9fc",
-                    textDecoration: "none",
-                  }}
+              {/* Certificate image */}
+              <div
+                className="flex items-center justify-center bg-black"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <img
+                  src={lightboxCert.certImageUrl}
+                  alt={lightboxCert.title}
+                  className="max-h-[70vh] max-w-full object-contain"
+                />
+              </div>
+
+              {/* Modal footer */}
+              <div
+                className="p-4 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between"
+                style={{
+                  borderTop: "1px solid rgba(255,255,255,0.1)",
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                }}
+              >
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "rgba(246,249,252,0.5)" }}
                 >
-                  Verify
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                  {lightboxCert.certId}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleCopyId(lightboxCert.certId)}
+                    className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-none! uppercase"
+                    style={{
+                      border: "2px solid rgba(246,249,252,0.3)",
+                      background: "transparent",
+                      color: "#f6f9fc",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {copiedId === lightboxCert.certId ? (
+                      <>
+                        <Check
+                          className="w-4 h-4"
+                          style={{ color: "#22c55e" }}
+                        />
+                        <span>Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        <span>Copy ID</span>
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href={lightboxCert.certUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm px-3 py-1.5 font-bold uppercase"
+                    style={{
+                      background: "#f6f132",
+                      color: "#0d0d0d",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Verify
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+
+        <CopyRight />
+      </div>
     </div>
   );
 }

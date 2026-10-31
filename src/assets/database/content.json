@@ -36,7 +36,6 @@
                 "React",
                 "Redux",
                 "Node.js",
-                "Express.js",
                 "Webpack",
                 "Vite",
                 "TailwindCSS",
@@ -143,18 +142,37 @@
     ],
     "resume": {
         "name": "Anguram Shanmugam",
-        "title": "Lead Front End Developer",
+        "title": "Senior Frontend Engineer",
         "location": "Coimbatore, Tamil Nadu",
         "contact": {
             "email": "ThisIsAnguram@gmail.com",
             "website": "https://anguram.dev"
         },
-        "profile": "Front-end developer with 6+ years building React and TypeScript apps in production. I care about code quality, test coverage, and shipping on time. Ran code reviews, wrote JEST tests, worked with designers, backend, and product across Agile sprints. Less code when less is right.",
+        "profile": "Frontend engineer with <overallExperience>+ years building React and TypeScript apps in production. I care about code quality, test coverage, and shipping on time. Ran code reviews, wrote JEST tests, worked with designers, backend, and product across Agile sprints. Growing backend skills through Node.js tooling and NPM package development. Less code when less is right.",
         "aiEngineering": [
-            "Use GitHub Copilot, Claude Code, Gemini CLI, and Cursor day-to-day. Architecture decisions and code reviews stay manual.",
-            "Wrote a .github/copilot-instructions.md to keep AI output consistent with the team's conventions across sessions.",
-            "Used MCP servers and agentic workflows to coordinate multi-file React and Node.js changes without losing test coverage.",
-            "Used AI for debugging and documentation. Component specs, pattern guides, and handoff notes stay up to date without extra effort."
+            {
+                "category": "Tools",
+                "items": [
+                    "GitHub Copilot",
+                    "Claude Code"
+                ]
+            },
+            {
+                "category": "Practices",
+                "items": [
+                    "Context engineering (copilot-instructions.md, team conventions)",
+                    "MCP servers",
+                    "Agentic multi-file workflows"
+                ]
+            },
+            {
+                "category": "Applied To",
+                "items": [
+                    "Debugging",
+                    "Documentation",
+                    "Refactors (architecture decisions and code reviews stay manual)"
+                ]
+            }
         ],
         "employmentHistory": [
             {
@@ -266,32 +284,67 @@
             }
         ],
         "skills": [
-            "React (Hooks, Context API, Suspense, use())",
-            "TypeScript",
-            "JavaScript (ES6+)",
-            "JEST & React Testing Library",
-            "Storybook",
-            "Code Reviews & Pair Programming",
-            "State Management (Redux, Context API)",
-            "RESTful APIs & Async Programming",
-            "Front-End Performance Optimization",
-            "Component-Based Architecture",
-            "CI/CD Pipelines",
-            "Agile / Scrum",
-            "Git & Version Control",
-            "Node.js",
-            "Express.js",
-            "HTML & CSS",
-            "TailwindCSS",
-            "Styled Components",
-            "Webpack / Vite",
-            "NPM Package Development",
-            "AWS",
-            "Docker",
-            "Terraform",
-            "Bash/Zsh Scripting",
-            "AI-Assisted Development (GitHub Copilot, Claude Code, Gemini CLI)",
-            "Context Engineering & Agentic Workflows"
+            {
+                "category": "Languages",
+                "items": [
+                    "TypeScript",
+                    "JavaScript (ES6+)",
+                    "HTML",
+                    "CSS"
+                ]
+            },
+            {
+                "category": "Frontend",
+                "items": [
+                    "React (Hooks, Context API, Suspense, use())",
+                    "Redux",
+                    "TailwindCSS",
+                    "Styled Components",
+                    "Performance Optimization"
+                ]
+            },
+            {
+                "category": "Testing",
+                "items": [
+                    "JEST",
+                    "React Testing Library",
+                    "Storybook"
+                ]
+            },
+            {
+                "category": "Backend (Exploring)",
+                "items": [
+                    "Node.js",
+                    "NPM Package Development",
+                    "REST APIs"
+                ]
+            },
+            {
+                "category": "Tooling",
+                "items": [
+                    "Git",
+                    "Vim",
+                    "Bash/Zsh Scripting",
+                    "Vite",
+                    "Webpack"
+                ]
+            },
+            {
+                "category": "Cloud & DevOps",
+                "items": [
+                    "AWS",
+                    "Docker",
+                    "Terraform",
+                    "CI/CD"
+                ]
+            },
+            {
+                "category": "Practices",
+                "items": [
+                    "Code Reviews",
+                    "Agile / Scrum"
+                ]
+            }
         ],
         "ceritificates": [
             {
@@ -326,7 +379,7 @@
             },
             {
                 "language": "English",
-                "proficiency": "Native speaker"
+                "proficiency": "Fluent"
             }
         ]
     }

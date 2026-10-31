@@ -1,10 +1,8 @@
 function CopyRight() {
   return (
-    <p
-      id="contact-me"
-      className="text-center text-xs font-medium pt-20 pb-10 line-clamp-2 dark:text-[#F6F9FC]"
-    >
-      Made by Anguram Shanmugam{" "}
+    <p className="w-full text-center font-(family-name:--JetBrains) uppercase text-xs font-medium mt-20 pt-6 pb-10 px-2 text-(--cp-accent) border-t border-(--cp-accent)/40">
+      Code by Claude · Look borrowed from Cyberpunk 2077 · Blame: Anguram
+      Shanmugam{" "}
       <span className="px-1">
         <svg
           version="1.0"
@@ -13,7 +11,7 @@ function CopyRight() {
           height="12px"
           viewBox="0 0 512.000000 512.000000"
           preserveAspectRatio="xMidYMid meet"
-          className="w-[12px] h-[12px] inline py-0 fill-[#050a0e] dark:fill-[#F6F9FC]"
+          className="w-[12px] h-[12px] inline py-0 fill-current"
         >
           <g
             transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
